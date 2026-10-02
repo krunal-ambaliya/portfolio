@@ -28,7 +28,7 @@ export const PERSONAL_INFO = {
     { label: "Prompt Engineering", icon: "terminal" }
   ],
   stats: [
-    { label: "Projects Completed", value: "4+ Production" },
+    { label: "Projects Completed", value: "5+ Production" },
     { label: "Academic CGPA", value: "8.5 / 10" },
     { label: "Primary Languages", value: "Python & JS" },
     { label: "Current Focus", value: "AI & Full Stack" }
@@ -136,37 +136,37 @@ export const PROJECTS: ProjectItem[] = [
     ]
   },
   {
-    id: "property-management",
-    title: "Property Management Web Application",
+    id: "paras-jewells",
+    title: "Paras Jewells — Luxury Jewellery & Diamond Store",
     category: "web-app",
-    iconType: "home",
-    badgeBg: "bg-blue-50 dark:bg-blue-950/70",
-    badgeTextColor: "text-blue-600 dark:text-blue-400",
-    badgeBorderColor: "border-blue-200 dark:border-blue-800/60",
-    image: "/src/assets/images/property_dashboard_1790950546758.jpg",
+    iconType: "shopping-bag",
+    badgeBg: "bg-emerald-50 dark:bg-emerald-950/70",
+    badgeTextColor: "text-emerald-600 dark:text-emerald-400",
+    badgeBorderColor: "border-emerald-200 dark:border-emerald-800/60",
+    image: "/src/assets/images/paras_jewells_ui_1790952223506.jpg",
     description:
-      "Developed a responsive property management platform featuring role-based dashboards for Admin, Agent, and Trader. Implemented authentication, profile management, reusable UI components, image upload with preview, charts, dynamic navigation, and responsive layouts to streamline property and job management.",
-    technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "MySQL"],
-    role: "Full-Stack Web Developer",
-    githubUrl: "https://github.com/krunal-ambaliya",
+      "Engineered an e-commerce digital showroom for Paras Jewells showcasing gold and diamond collections, purity specification filters (14K/18K/22K), diamond cut clarity matrices, and direct WhatsApp concierge ordering.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion", "Lucide Icons"],
+    role: "Lead Frontend & E-Commerce Developer",
+    liveUrl: "https://paras-jewells.vercel.app/",
+    githubUrl: "https://github.com/krunal-ambaliya/paras_jewells",
     keyFeatures: [
-      "Role-Based Dashboards: Dedicated portal workflows for Admin, Real Estate Agent, and Maintenance Trader.",
-      "Profile & Authentication Management: Secure credential handling, profile state updates, and session routing.",
-      "Property Listings & Media Uploads: Image upload with instant browser preview and validation.",
-      "Dynamic Navigation & Analytics: Interactive data charts tracking occupancy, job management tickets, and property listings.",
-      "Responsive Layout: Mobile-first responsive UI crafted with Bootstrap grid standards."
+      "High-End Digital Showroom: Curated collections of gold, diamond rings, necklaces, and bridal sets with high-resolution imagery.",
+      "Purity & Cut Filtering: Granular filters for gold purity (14K/18K/22K), carat weights, diamond clarity, and budget ranges.",
+      "WhatsApp Concierge Integration: Direct customer order inquiries and bespoke bridal consultation via WhatsApp.",
+      "Performance-Tuned UI: Smooth framer-motion animations, mobile-optimized catalog navigation, and sub-second page loads."
     ],
     architectureDetails:
-      "Designed with relational MySQL data schemas linking property units, tenants, user roles, and maintenance requests. Frontend utilizes modular JavaScript event architectures and responsive Bootstrap layouts.",
+      "Developed with React, TypeScript, and Tailwind CSS using modern component composition, responsive layout grids, and lightweight state management for instantaneous catalog browsing.",
     metrics: [
-      { label: "Role Portals", value: "3 (Admin, Agent, Trader)" },
-      { label: "Database Engine", value: "MySQL" },
-      { label: "Layout Standard", value: "100% Responsive" }
+      { label: "Live Storefront", value: "paras-jewells.vercel.app" },
+      { label: "Inquiry Engine", value: "WhatsApp Concierge" },
+      { label: "Catalog Filter", value: "Gold & Diamond Purity" }
     ]
   },
   {
-    id: "dentray-clinic",
-    title: "Dentray – Doctor Appointment & Clinic Management Website",
+    id: "clinic-doctor",
+    title: "CarePulse / Dentray — Clinic & Doctor Appointment Booking",
     category: "healthcare",
     iconType: "stethoscope",
     badgeBg: "bg-indigo-50 dark:bg-indigo-950/70",
@@ -174,23 +174,51 @@ export const PROJECTS: ProjectItem[] = [
     badgeBorderColor: "border-indigo-200 dark:border-indigo-800/60",
     image: "/src/assets/images/clinic_booking_1790950566078.jpg",
     description:
-      "Developed a responsive clinic management website with doctor profile management, specialties, consultation fees, appointment scheduling, and doctor availability. Built an admin dashboard to manage doctors, services, pricing, schedules, and clinic content while optimizing responsiveness and user experience.",
-    technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    role: "Front-End Developer & UI Designer",
-    githubUrl: "https://github.com/krunal-ambaliya",
+      "Developed a comprehensive healthcare clinic portal and patient appointment scheduling system. Features specialist doctor directories, consultation fee matrices, real-time availability slot booking, and administrative clinic controls.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "REST APIs", "Bootstrap"],
+    role: "Full-Stack Web Developer",
+    liveUrl: "https://clinic-doctor001.vercel.app/",
+    githubUrl: "https://github.com/krunal-ambaliya/clinic-app",
     keyFeatures: [
-      "Doctor Profile Management: Profiles detailing medical specialties, qualifications, and consultation fee matrices.",
-      "Appointment Scheduling Engine: Patient self-booking interface calculating doctor real-time availability slots.",
-      "Admin Clinic Control Center: Centralized management dashboard for doctor rosters, treatment services, pricing, and clinic schedules.",
-      "Optimized UX & Accessibility: Responsive healthcare layout ensuring effortless booking on mobile and desktop devices.",
-      "Form Validations: Dynamic schedule verification to prevent scheduling conflicts."
+      "Doctor Specialty Directory: Detailed practitioner profiles highlighting certifications, consultation fees, and patient ratings.",
+      "Interactive Appointment Booking: Real-time time slot selector preventing double bookings with instant confirmation.",
+      "Clinic Administration Console: Centralized portal to configure working hours, holiday schedules, and service pricing.",
+      "Mobile-Optimized Patient Experience: Clean, accessible interface tailored for fast booking across mobile and desktop devices."
     ],
     architectureDetails:
-      "Engineered with clean vanilla JavaScript logic, modular DOM manipulation, and customized Bootstrap UI components for healthcare ergonomics.",
+      "Built with React, TypeScript, and modular REST services for appointment management. Styled with responsive Tailwind CSS components for healthcare usability.",
     metrics: [
-      { label: "Booking Workflow", value: "Seamless & Instant" },
-      { label: "Admin Console", value: "Full Clinic Control" },
-      { label: "Device Support", value: "Mobile & Desktop" }
+      { label: "Live Deployment", value: "clinic-doctor001.vercel.app" },
+      { label: "GitHub Repo", value: "clinic-app" },
+      { label: "Booking Engine", value: "Real-Time Slots" }
+    ]
+  },
+  {
+    id: "propdoc-property-management",
+    title: "PropDoc — Property & Tenancy Management System",
+    category: "web-app",
+    iconType: "home",
+    badgeBg: "bg-blue-50 dark:bg-blue-950/70",
+    badgeTextColor: "text-blue-600 dark:text-blue-400",
+    badgeBorderColor: "border-blue-200 dark:border-blue-800/60",
+    image: "/src/assets/images/property_dashboard_1790950546758.jpg",
+    description:
+      "Engineered PropDoc, a multi-role property and asset documentation platform. Features tailored workflows for Admins, Real Estate Agents, and Maintenance Traders with lease tracking, unit listings, and repair dispatch ticketing.",
+    technologies: ["Python", "JavaScript", "MySQL", "Bootstrap", "REST APIs", "HTML5/CSS3"],
+    role: "Full-Stack Software Engineer",
+    githubUrl: "https://github.com/krunal-ambaliya/propdoc",
+    keyFeatures: [
+      "Multi-Role Portals: Distinct permission tiers and dashboards for Property Owners/Admins, Agents, and Traders.",
+      "Tenancy & Lease Documentation: Centralized record-keeping for tenant agreements, rent rolls, and unit occupancy status.",
+      "Maintenance Ticket Dispatch: Streamlined service request workflow with contractor assignments and status notifications.",
+      "Analytics & Reporting: Real-time charts for rental collection, occupancy rates, and pending maintenance tasks."
+    ],
+    architectureDetails:
+      "Engineered with Python backend logic, structured MySQL relational schemas, and responsive Bootstrap frontend interfaces for high data density and cross-device accessibility.",
+    metrics: [
+      { label: "GitHub Repository", value: "propdoc" },
+      { label: "User Roles", value: "3 Portals (Admin/Agent/Trader)" },
+      { label: "Database Engine", value: "MySQL Schemas" }
     ]
   },
   {

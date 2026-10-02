@@ -71,42 +71,44 @@ export const SkillsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* View Switcher Tabs (Glassmorphic) */}
-        <div className="flex items-center gap-2 mb-8 border-b border-slate-200/80 dark:border-slate-800/80 pb-3">
+        {/* View Switcher Tabs (Responsive Segmented Navigation) */}
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 mb-8 border-b border-slate-200/80 dark:border-slate-800/80 pb-3">
           <button
             onClick={() => setActiveTab('3d-stack')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
+            className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
               activeTab === '3d-stack'
                 ? 'bg-blue-600 text-white shadow-md'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white glass-card'
             }`}
           >
-            <Box className="w-4 h-4" />
-            <span>3D Interactive Tech Stack</span>
+            <Box className="w-4 h-4 shrink-0" />
+            <span>Tech Stack</span>
           </button>
 
           <button
             onClick={() => setActiveTab('strengths')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
+            className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
               activeTab === 'strengths'
                 ? 'bg-blue-600 text-white shadow-md'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white glass-card'
             }`}
           >
-            <Star className="w-4 h-4" />
-            <span>Technical Strengths</span>
+            <Star className="w-4 h-4 shrink-0" />
+            <span className="hidden sm:inline">Technical </span>
+            <span>Strengths</span>
           </button>
 
           <button
             onClick={() => setActiveTab('languages')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
+            className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
               activeTab === 'languages'
                 ? 'bg-blue-600 text-white shadow-md'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white glass-card'
             }`}
           >
-            <Globe className="w-4 h-4" />
-            <span>Spoken Languages</span>
+            <Globe className="w-4 h-4 shrink-0" />
+            <span className="hidden sm:inline">Spoken </span>
+            <span>Languages</span>
           </button>
         </div>
 
@@ -133,12 +135,12 @@ export const SkillsSection: React.FC = () => {
 
               <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-blue-500 animate-pulse" />
-                <span>Hover any skill to view description & proficiency</span>
+                <span>Hover or tap skill to view details</span>
               </div>
             </div>
 
             {/* 3D Micro-Elements Grid */}
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4 justify-items-center">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2.5 sm:gap-4 justify-items-center">
               {filteredSkills.map((skill) => (
                 <TechCard3D
                   key={skill.name}
@@ -152,10 +154,10 @@ export const SkillsSection: React.FC = () => {
 
             {/* 3D Glass Inspector HUD Panel */}
             {inspectedSkill && (
-              <div className="p-5 sm:p-6 rounded-2xl glass-panel animate-in fade-in zoom-in-95 duration-200">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200/60 dark:border-slate-800">
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg font-bold text-slate-900 dark:text-white">
+              <div className="p-4 sm:p-6 rounded-2xl glass-panel animate-in fade-in zoom-in-95 duration-200 shadow-md">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-200/60 dark:border-slate-800">
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-words">
                       {inspectedSkill.name}
                     </span>
                     <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-mono">
@@ -171,9 +173,9 @@ export const SkillsSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-3 flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <div className="pt-3 flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed break-words">
                   <Info className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-                  <p>{getSkillContext(inspectedSkill.name)}</p>
+                  <p className="break-words leading-relaxed">{getSkillContext(inspectedSkill.name)}</p>
                 </div>
               </div>
             )}

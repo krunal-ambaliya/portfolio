@@ -33,31 +33,31 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
       aria-labelledby="modal-title"
     >
       <div
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#111116] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto bg-white dark:bg-[#111116] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-4 sm:p-6 sm:p-8 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer z-10"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Modal Header */}
-        <div className="mb-5">
-          <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800/60 px-2.5 py-1 rounded-md mb-3">
-            <Sparkles className="w-3 h-3" />
+        <div className="mb-4 sm:mb-5 pr-8">
+          <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800/60 px-2.5 py-1 rounded-md mb-2 sm:mb-3">
+            <Sparkles className="w-3 h-3 shrink-0" />
             <span>Project Case Study</span>
           </div>
 
-          <h3 id="modal-title" className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
+          <h3 id="modal-title" className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white leading-snug break-words">
             {project.title}
           </h3>
 
           {project.role && (
-            <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
               Role: <span className="text-slate-700 dark:text-slate-300 font-semibold">{project.role}</span>
             </p>
           )}
@@ -65,14 +65,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         {/* High-Resolution Screenshot Preview */}
         {project.image && (
-          <div className="mb-6 rounded-xl overflow-hidden border border-slate-200/80 dark:border-slate-800 bg-slate-900 shadow-md">
+          <div className="mb-5 sm:mb-6 rounded-xl overflow-hidden border border-slate-200/80 dark:border-slate-800 bg-slate-900 shadow-md">
             <div className="flex items-center justify-between px-3 py-1.5 bg-slate-100 dark:bg-slate-900 border-b border-slate-200/70 dark:border-slate-800/70 text-[10px] font-mono text-slate-400">
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 shrink-0">
                 <span className="w-2 h-2 rounded-full bg-rose-400/80" />
                 <span className="w-2 h-2 rounded-full bg-amber-400/80" />
                 <span className="w-2 h-2 rounded-full bg-emerald-400/80" />
               </div>
-              <span className="truncate max-w-[240px] text-slate-500 dark:text-slate-400">
+              <span className="truncate max-w-[170px] sm:max-w-[240px] text-slate-500 dark:text-slate-400 px-2">
                 {project.liveUrl || `krunal-ambaliya / ${project.id}`}
               </span>
               {project.liveUrl ? (
@@ -80,13 +80,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 hover:underline"
+                  className="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 hover:underline shrink-0"
                 >
                   <Globe className="w-3 h-3" />
-                  <span>Open Live Site</span>
+                  <span>Live Site</span>
                 </a>
               ) : (
-                <span className="text-slate-400">Preview</span>
+                <span className="text-slate-400 shrink-0">Preview</span>
               )}
             </div>
 
@@ -101,19 +101,19 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         )}
 
         {/* Summary Description */}
-        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed break-words mb-5 sm:mb-6">
           {project.description}
         </div>
 
-        {/* Key Metrics */}
+        {/* Key Metrics (Responsive 1-col on mobile, 3-cols on desktop with break-all for clean wrapping) */}
         {project.metrics && (
-          <div className="grid grid-cols-3 gap-3 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 mb-5 sm:mb-6">
             {project.metrics.map((m, idx) => (
-              <div key={idx} className="p-3 rounded-lg bg-slate-100/80 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 text-center">
-                <div className="text-sm sm:text-base font-bold font-mono text-blue-600 dark:text-blue-400 tabular-nums">
+              <div key={idx} className="p-2.5 sm:p-3 rounded-xl bg-slate-100/80 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 text-center flex flex-col justify-center min-w-0">
+                <div className="text-xs sm:text-sm font-bold font-mono text-blue-600 dark:text-blue-400 break-words leading-snug">
                   {m.value}
                 </div>
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-tight">
+                <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">
                   {m.label}
                 </div>
               </div>
@@ -122,16 +122,16 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         )}
 
         {/* Key Features */}
-        <div className="mb-6">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-2 mb-3">
-            <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+        <div className="mb-5 sm:mb-6">
+          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-2 mb-2.5">
+            <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
             <span>Key Features & Architecture Highlights</span>
           </h4>
-          <ul className="space-y-2.5">
+          <ul className="space-y-2">
             {project.keyFeatures.map((feat, idx) => (
-              <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed break-words">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
-                <span>{feat}</span>
+                <span className="break-words leading-relaxed">{feat}</span>
               </li>
             ))}
           </ul>
@@ -139,12 +139,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         {/* Architecture Details */}
         {project.architectureDetails && (
-          <div className="mb-6">
+          <div className="mb-5 sm:mb-6">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white flex items-center gap-2 mb-2">
-              <Cpu className="w-4 h-4 text-blue-500" />
+              <Cpu className="w-4 h-4 text-blue-500 shrink-0" />
               <span>Technical Implementation</span>
             </h4>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed break-words">
               {project.architectureDetails}
             </p>
           </div>
