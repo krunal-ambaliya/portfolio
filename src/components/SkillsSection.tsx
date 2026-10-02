@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SKILLS, TECHNICAL_STRENGTHS, SPOKEN_LANGUAGES } from '../data/portfolioData';
 import { TechCard3D } from './TechCard3D';
+import { Card3D } from './Card3D';
 import { SkillItem } from '../types/portfolio';
 import {
   Code,
@@ -178,24 +179,29 @@ export const SkillsSection: React.FC = () => {
           </div>
         )}
 
-        {/* Tab 2: Technical Strengths (Glassmorphism Cards) */}
+        {/* Tab 2: Technical Strengths (Glassmorphism Cards with 3D Tilt) */}
         {activeTab === 'strengths' && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {TECHNICAL_STRENGTHS.map((strength) => (
-              <div
+              <Card3D
                 key={strength.name}
-                className="p-5 rounded-2xl glass-card hover:border-blue-400 dark:hover:border-blue-500 transition-colors shadow-xs"
+                tiltIntensity={6}
+                glareOpacity={0.25}
+                scale={1.02}
+                className="p-5 rounded-2xl glass-card hover:border-blue-400 dark:hover:border-blue-500 transition-colors shadow-xs h-full"
               >
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
-                    {strength.name}
-                  </h3>
+                <div style={{ transform: 'translateZ(14px)' }}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                      {strength.name}
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-6">
+                    {strength.description}
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-6">
-                  {strength.description}
-                </p>
-              </div>
+              </Card3D>
             ))}
           </div>
         )}

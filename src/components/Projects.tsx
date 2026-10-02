@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { PROJECTS } from '../data/portfolioData';
 import { ProjectItem } from '../types/portfolio';
 import { ProjectModal } from './ProjectModal';
+import { Card3D } from './Card3D';
 import {
   FileText,
   Home,
@@ -10,7 +11,8 @@ import {
   Search,
   ExternalLink,
   ChevronRight,
-  Github
+  Github,
+  Sparkles
 } from 'lucide-react';
 
 export const Projects: React.FC = () => {
@@ -40,13 +42,13 @@ export const Projects: React.FC = () => {
   const renderIcon = (type: ProjectItem['iconType']) => {
     switch (type) {
       case 'home':
-        return <Home className="w-6 h-6 text-slate-800 dark:text-slate-200" strokeWidth={2.2} />;
+        return <Home className="w-6 h-6 text-blue-700 dark:text-blue-300" strokeWidth={2.2} />;
       case 'stethoscope':
-        return <Stethoscope className="w-6 h-6 text-slate-800 dark:text-slate-200" strokeWidth={2.2} />;
+        return <Stethoscope className="w-6 h-6 text-indigo-700 dark:text-indigo-300" strokeWidth={2.2} />;
       case 'code':
-        return <Code2 className="w-6 h-6 text-slate-800 dark:text-slate-200" strokeWidth={2.2} />;
+        return <Code2 className="w-6 h-6 text-emerald-700 dark:text-emerald-300" strokeWidth={2.2} />;
       default:
-        return <Code2 className="w-6 h-6" />;
+        return <Code2 className="w-6 h-6 text-blue-600 dark:text-blue-400" />;
     }
   };
 
@@ -77,7 +79,7 @@ export const Projects: React.FC = () => {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 text-xs font-medium rounded-xl whitespace-nowrap transition-colors ${
+                className={`px-3.5 py-1.5 text-xs font-medium rounded-xl whitespace-nowrap transition-colors cursor-pointer ${
                   selectedCategory === cat.id
                     ? 'bg-blue-600 text-white shadow-xs font-semibold'
                     : 'glass-card text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -88,7 +90,7 @@ export const Projects: React.FC = () => {
             ))}
           </div>
 
-          {/* Search box (Glassmorphic) */}
+          {/* Search box */}
           <div className="relative sm:w-64">
             <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
@@ -106,68 +108,85 @@ export const Projects: React.FC = () => {
           {/* Continuous vertical timeline connector line */}
           <div className="absolute left-6 sm:left-7 top-7 bottom-7 w-[2px] bg-blue-200/80 dark:bg-blue-900/60" />
 
-          <div className="space-y-12 sm:space-y-16">
+          <div className="space-y-10 sm:space-y-12">
             {filteredProjects.map((project) => (
               <div key={project.id} className="relative flex items-start gap-4 sm:gap-6 group">
-                {/* Custom Icon Box - Glassmorphic */}
+                {/* 3D Floating Icon Box on timeline */}
                 <div
-                  className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 z-10 transition-transform duration-200 group-hover:scale-105 shadow-xs ${
+                  className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 z-10 transition-transform duration-200 group-hover:scale-110 shadow-md ${
                     project.id === 'property-management'
-                      ? 'bg-blue-50/80 dark:bg-[#151c2e]/80 border border-blue-200/80 dark:border-blue-800/60 text-blue-700 dark:text-blue-300'
+                      ? 'bg-blue-50/90 dark:bg-[#151c2e]/90 border border-blue-200/80 dark:border-blue-800/60'
                       : project.id === 'dentray-clinic'
-                      ? 'bg-indigo-50/80 dark:bg-[#1a182e]/80 border border-indigo-200/80 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300'
-                      : 'bg-emerald-50/80 dark:bg-[#132520]/80 border border-emerald-200/80 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300'
+                      ? 'bg-indigo-50/90 dark:bg-[#1a182e]/90 border border-indigo-200/80 dark:border-indigo-800/60'
+                      : 'bg-emerald-50/90 dark:bg-[#132520]/90 border border-emerald-200/80 dark:border-emerald-800/60'
                   }`}
                 >
                   {renderIcon(project.iconType)}
                 </div>
 
-                {/* Content Column in Glass Card */}
-                <div className="flex-1 p-5 sm:p-6 rounded-2xl glass-card space-y-2.5 hover:border-blue-400/50 transition-colors">
-                  {/* Title in signature blue */}
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3
-                      className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight leading-snug hover:underline cursor-pointer"
-                      onClick={() => setActiveModalProject(project)}
-                    >
-                      {project.title}
-                    </h3>
+                {/* Content Column Wrapped in 3D Tilt Card */}
+                <div className="flex-1">
+                  <Card3D
+                    tiltIntensity={5}
+                    glareOpacity={0.28}
+                    scale={1.018}
+                    className="p-5 sm:p-6 rounded-2xl glass-card hover:border-blue-400/80 dark:hover:border-blue-500/60 transition-all duration-200 shadow-md"
+                  >
+                    <div style={{ transform: 'translateZ(14px)' }} className="space-y-3">
+                      {/* Title & Actions Row */}
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <h3
+                          className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight leading-snug hover:underline cursor-pointer"
+                          onClick={() => setActiveModalProject(project)}
+                        >
+                          {project.title}
+                        </h3>
 
-                    <div className="flex items-center gap-2">
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 glass-card transition-colors"
-                        title="View GitHub Repository"
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                        <span>Code</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                        <div style={{ transform: 'translateZ(20px)' }} className="flex items-center gap-2">
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 glass-card transition-colors shadow-2xs"
+                            title="View GitHub Repository"
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                            <span>Code</span>
+                            <ExternalLink className="w-3 h-3 text-slate-400" />
+                          </a>
 
-                      <button
-                        onClick={() => setActiveModalProject(project)}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
-                      >
-                        <span>Details</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
+                          <button
+                            onClick={() => setActiveModalProject(project)}
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                          >
+                            <span>Case Study</span>
+                            <ChevronRight className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Description text */}
+                      <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+                        {project.description}
+                      </p>
+
+                      {/* Technologies row with 3D elevation */}
+                      <div style={{ transform: 'translateZ(10px)' }} className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 flex flex-wrap items-center gap-1.5">
+                        <span className="font-bold text-blue-600 dark:text-blue-400 mr-1 flex items-center gap-1">
+                          <Sparkles className="w-3 h-3" />
+                          <span>Technologies:</span>
+                        </span>
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-xs font-mono px-2 py-0.5 rounded-md bg-white/70 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Description text */}
-                  <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                    {project.description}
-                  </p>
-
-                  {/* Technologies row */}
-                  <div className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 pt-1">
-                    <span className="font-bold text-blue-600 dark:text-blue-400 mr-1.5">
-                      Technologies:
-                    </span>
-                    <span>{project.technologies.join(', ')}</span>
-                  </div>
+                  </Card3D>
                 </div>
               </div>
             ))}
