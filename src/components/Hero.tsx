@@ -4,7 +4,6 @@ import { LikeWidget } from './LikeWidget';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import {
   MapPin,
-  Phone,
   Mail,
   Github,
   ArrowDown,
@@ -15,7 +14,6 @@ import {
   Shield,
   Terminal,
   ExternalLink,
-  MessageCircle,
   Sparkles
 } from 'lucide-react';
 
@@ -52,14 +50,6 @@ export const Hero: React.FC = () => {
               <MapPin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span>{PERSONAL_INFO.location}</span>
             </span>
-            <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">·</span>
-            <a
-              href={`tel:${PERSONAL_INFO.phoneRaw}`}
-              className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              <Phone className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span>{PERSONAL_INFO.phone}</span>
-            </a>
             <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">·</span>
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
@@ -116,14 +106,12 @@ export const Hero: React.FC = () => {
             </button>
 
             <a
-              href={PERSONAL_INFO.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold glass-card text-emerald-700 dark:text-emerald-400 hover:border-emerald-500/80 transition-colors shadow-xs"
-              title="Chat on WhatsApp"
+              href={PERSONAL_INFO.emailInquiryUrl}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold glass-card text-blue-700 dark:text-blue-400 hover:border-blue-500/80 transition-colors shadow-xs"
+              title="Send an Email Inquiry"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              <span>WhatsApp</span>
+              <Mail className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+              <span>Email Inquiry</span>
             </a>
 
             <a

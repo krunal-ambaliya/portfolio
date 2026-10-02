@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Github, Mail, Phone } from 'lucide-react';
+import { ArrowUp, Github, Mail } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
@@ -42,18 +42,11 @@ export const Footer: React.FC = () => {
             <span>Discord</span>
           </a>
           <a
-            href={`mailto:${PERSONAL_INFO.email}`}
+            href={PERSONAL_INFO.emailInquiryUrl}
             className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1"
           >
             <Mail className="w-3.5 h-3.5" />
-            <span>Email</span>
-          </a>
-          <a
-            href={`tel:${PERSONAL_INFO.phoneRaw}`}
-            className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1"
-          >
-            <Phone className="w-3.5 h-3.5" />
-            <span>Call</span>
+            <span>Email Inquiry</span>
           </a>
           <button
             onClick={scrollToTop}

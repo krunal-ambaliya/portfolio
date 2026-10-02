@@ -37,7 +37,7 @@ export interface ProjectItem {
   architectureDetails?: string;
   liveUrl?: string;
   githubUrl: string;
-  metrics?: { label: string; value: string }[];
+  metrics?: { label: string; value: string; url?: string }[];
   image?: string;
 }
 

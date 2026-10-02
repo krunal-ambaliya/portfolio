@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, ArrowUpRight, Github } from 'lucide-react';
+import { Sun, Moon, Menu, X, ArrowUpRight, Github, Mail } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -158,10 +158,11 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
                 <span>github.com/krunal-ambaliya</span>
               </a>
               <a
-                href={`tel:${PERSONAL_INFO.phoneRaw}`}
-                className="text-xs text-slate-500 font-mono"
+                href={PERSONAL_INFO.emailInquiryUrl}
+                className="inline-flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 font-medium hover:underline"
               >
-                {PERSONAL_INFO.phone}
+                <Mail className="w-3.5 h-3.5" />
+                <span>Email Inquiry</span>
               </a>
             </div>
           </nav>

@@ -13,14 +13,12 @@ export const PERSONAL_INFO = {
   summary:
     "Motivated Web Developer with hands-on experience in building responsive, user-centric web applications and AI-powered developer tools. Proficient in front-end development, Python, REST API integration, and modern JavaScript frameworks. Passionate about creating scalable web solutions while continuously expanding knowledge in Artificial Intelligence and Cyber Security.",
   location: "Gujarat, India",
-  phone: "+91 6356334116",
-  phoneRaw: "+916356334116",
   email: "krunalambaliya123@gmail.com",
+  emailInquiryUrl: "mailto:krunalambaliya123@gmail.com?subject=Project%20Inquiry%20or%20Opportunity",
   githubUsername: "krunal-ambaliya",
   githubUrl: "https://github.com/krunal-ambaliya",
   discordUsername: "krues7",
   discordUrl: "https://discord.com/users/krues7",
-  whatsappUrl: "https://wa.me/916356334116",
   focusAreas: [
     { label: "Full Stack Web Development", icon: "code" },
     { label: "Artificial Intelligence", icon: "brain" },
@@ -131,8 +129,8 @@ export const PROJECTS: ProjectItem[] = [
       "Engineered with Next.js 16 App Router, TypeScript, and serverless Neon PostgreSQL. Styled with custom Fuse design tokens (16px radii, frosted glass surfaces, micro-animations) and integrated Cloudinary CDN for optimized media delivery.",
     metrics: [
       { label: "Tech Stack", value: "Next.js 16 + Neon SQL" },
-      { label: "Live Deployment", value: "Vercel Production" },
-      { label: "Admin Suite", value: "Complete Business Control" }
+      { label: "Live Deployment", value: "timect-new.vercel.app", url: "https://timect-new.vercel.app/" },
+      { label: "Admin Suite", value: "Complete Business Control", url: "https://timect-new.vercel.app/admin" }
     ]
   },
   {
@@ -145,7 +143,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBorderColor: "border-emerald-200 dark:border-emerald-800/60",
     image: "/src/assets/images/paras_jewells_ui_1790952223506.jpg",
     description:
-      "Engineered an e-commerce digital showroom for Paras Jewells showcasing gold and diamond collections, purity specification filters (14K/18K/22K), diamond cut clarity matrices, and direct WhatsApp concierge ordering.",
+      "Engineered an e-commerce digital showroom for Paras Jewells showcasing gold and diamond collections, purity specification filters (14K/18K/22K), diamond cut clarity matrices, and direct email inquiry ordering.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion", "Lucide Icons"],
     role: "Lead Frontend & E-Commerce Developer",
     liveUrl: "https://paras-jewells.vercel.app/",
@@ -153,15 +151,15 @@ export const PROJECTS: ProjectItem[] = [
     keyFeatures: [
       "High-End Digital Showroom: Curated collections of gold, diamond rings, necklaces, and bridal sets with high-resolution imagery.",
       "Purity & Cut Filtering: Granular filters for gold purity (14K/18K/22K), carat weights, diamond clarity, and budget ranges.",
-      "WhatsApp Concierge Integration: Direct customer order inquiries and bespoke bridal consultation via WhatsApp.",
+      "Email Inquiry Integration: Direct customer order inquiries and bespoke bridal consultation via email.",
       "Performance-Tuned UI: Smooth framer-motion animations, mobile-optimized catalog navigation, and sub-second page loads."
     ],
     architectureDetails:
       "Developed with React, TypeScript, and Tailwind CSS using modern component composition, responsive layout grids, and lightweight state management for instantaneous catalog browsing.",
     metrics: [
-      { label: "Live Storefront", value: "paras-jewells.vercel.app" },
-      { label: "Inquiry Engine", value: "WhatsApp Concierge" },
-      { label: "Catalog Filter", value: "Gold & Diamond Purity" }
+      { label: "Live Storefront", value: "paras-jewells.vercel.app", url: "https://paras-jewells.vercel.app/" },
+      { label: "Inquiry Engine", value: "Email Inquiry", url: "mailto:krunalambaliya123@gmail.com?subject=Paras%20Jewells%20Inquiry" },
+      { label: "Catalog Filter", value: "Gold & Diamond Purity", url: "https://paras-jewells.vercel.app/" }
     ]
   },
   {
@@ -188,9 +186,9 @@ export const PROJECTS: ProjectItem[] = [
     architectureDetails:
       "Built with React, TypeScript, and modular REST services for appointment management. Styled with responsive Tailwind CSS components for healthcare usability.",
     metrics: [
-      { label: "Live Deployment", value: "clinic-doctor001.vercel.app" },
-      { label: "GitHub Repo", value: "clinic-app" },
-      { label: "Booking Engine", value: "Real-Time Slots" }
+      { label: "Live Deployment", value: "clinic-doctor001.vercel.app", url: "https://clinic-doctor001.vercel.app/" },
+      { label: "GitHub Repo", value: "clinic-app", url: "https://github.com/krunal-ambaliya/clinic-app" },
+      { label: "Booking Engine", value: "Real-Time Slots", url: "https://clinic-doctor001.vercel.app/" }
     ]
   },
   {
@@ -216,7 +214,7 @@ export const PROJECTS: ProjectItem[] = [
     architectureDetails:
       "Engineered with Python backend logic, structured MySQL relational schemas, and responsive Bootstrap frontend interfaces for high data density and cross-device accessibility.",
     metrics: [
-      { label: "GitHub Repository", value: "propdoc" },
+      { label: "GitHub Repository", value: "propdoc", url: "https://github.com/krunal-ambaliya/propdoc" },
       { label: "User Roles", value: "3 Portals (Admin/Agent/Trader)" },
       { label: "Database Engine", value: "MySQL Schemas" }
     ]
@@ -255,7 +253,7 @@ export const PROJECTS: ProjectItem[] = [
     metrics: [
       { label: "Integrated APIs", value: "Multiple LLMs" },
       { label: "Code Analysis", value: "Security & Performance" },
-      { label: "Platform Coverage", value: "Browser + VS Code" }
+      { label: "Platform Coverage", value: "Browser + VS Code", url: "https://github.com/krunal-ambaliya" }
     ]
   }
 ];
