@@ -14,7 +14,8 @@ import {
   ChevronRight,
   Github,
   Sparkles,
-  Eye
+  CheckCircle2,
+  Layers
 } from 'lucide-react';
 
 export const Projects: React.FC = () => {
@@ -44,21 +45,21 @@ export const Projects: React.FC = () => {
   const renderIcon = (type: ProjectItem['iconType']) => {
     switch (type) {
       case 'shopping-bag':
-        return <ShoppingBag className="w-6 h-6 text-amber-600 dark:text-amber-400" strokeWidth={2.2} />;
+        return <ShoppingBag className="w-5 h-5 text-amber-600 dark:text-amber-400" strokeWidth={2.2} />;
       case 'home':
-        return <Home className="w-6 h-6 text-blue-700 dark:text-blue-300" strokeWidth={2.2} />;
+        return <Home className="w-5 h-5 text-blue-600 dark:text-blue-400" strokeWidth={2.2} />;
       case 'stethoscope':
-        return <Stethoscope className="w-6 h-6 text-indigo-700 dark:text-indigo-300" strokeWidth={2.2} />;
+        return <Stethoscope className="w-5 h-5 text-indigo-600 dark:text-indigo-400" strokeWidth={2.2} />;
       case 'code':
-        return <Code2 className="w-6 h-6 text-emerald-700 dark:text-emerald-300" strokeWidth={2.2} />;
+        return <Code2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" strokeWidth={2.2} />;
       default:
-        return <Code2 className="w-6 h-6 text-blue-600 dark:text-blue-400" />;
+        return <Code2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />;
     }
   };
 
   return (
     <section id="projects" className="py-16 md:py-24 border-t border-white/20 dark:border-white/10 relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex items-center gap-3 sm:gap-4 mb-8">
           <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white shrink-0 shadow-xs">
@@ -66,7 +67,7 @@ export const Projects: React.FC = () => {
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white uppercase font-sans">
-            PROJECTS
+            FEATURED PROJECTS
           </h2>
 
           <div className="flex-1 flex items-center ml-2">
@@ -101,169 +102,211 @@ export const Projects: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search technologies, title..."
+              placeholder="Search projects, stack..."
               className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl glass-card text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500 transition-colors"
             />
           </div>
         </div>
 
-        {/* Timeline Projects List */}
-        <div className="relative">
-          {/* Continuous vertical timeline connector line */}
-          <div className="absolute left-6 sm:left-7 top-7 bottom-7 w-[2px] bg-blue-200/80 dark:bg-blue-900/60" />
+        {/* Alternating Side-by-Side Projects List */}
+        <div className="space-y-12 sm:space-y-16">
+          {filteredProjects.map((project, index) => {
+            const isImageOnLeft = index % 2 === 0;
 
-          <div className="space-y-10 sm:space-y-12">
-            {filteredProjects.map((project) => (
-              <div key={project.id} className="relative flex items-start gap-4 sm:gap-6 group">
-                {/* 3D Floating Icon Box on timeline */}
+            return (
+              <div
+                key={project.id}
+                className="p-6 sm:p-8 rounded-3xl glass-panel relative overflow-hidden group hover:border-blue-400/60 dark:hover:border-blue-500/40 transition-all duration-300 shadow-md"
+              >
+                {/* Subtle ambient background glow */}
                 <div
-                  className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 z-10 transition-transform duration-200 group-hover:scale-110 shadow-md ${
-                    project.id === 'timect-ecommerce'
-                      ? 'bg-amber-50/90 dark:bg-[#251e12]/90 border border-amber-200/80 dark:border-amber-800/60'
-                      : project.id === 'property-management'
-                      ? 'bg-blue-50/90 dark:bg-[#151c2e]/90 border border-blue-200/80 dark:border-blue-800/60'
-                      : project.id === 'dentray-clinic'
-                      ? 'bg-indigo-50/90 dark:bg-[#1a182e]/90 border border-indigo-200/80 dark:border-indigo-800/60'
-                      : 'bg-emerald-50/90 dark:bg-[#132520]/90 border border-emerald-200/80 dark:border-emerald-800/60'
-                  }`}
-                >
-                  {renderIcon(project.iconType)}
-                </div>
+                  className={`absolute -top-24 ${
+                    isImageOnLeft ? '-left-24' : '-right-24'
+                  } w-72 h-72 rounded-full bg-blue-500/10 dark:bg-blue-400/10 blur-3xl pointer-events-none`}
+                />
 
-                {/* Content Column Wrapped in 3D Tilt Card */}
-                <div className="flex-1">
-                  <Card3D
-                    tiltIntensity={5}
-                    glareOpacity={0.28}
-                    scale={1.018}
-                    className="p-5 sm:p-6 rounded-2xl glass-card hover:border-blue-400/80 dark:hover:border-blue-500/60 transition-all duration-200 shadow-md"
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                  {/* Image Column */}
+                  <div
+                    className={`lg:col-span-6 ${
+                      isImageOnLeft ? 'lg:order-1' : 'lg:order-2'
+                    }`}
                   >
-                    <div style={{ transform: 'translateZ(14px)' }} className="space-y-4">
-                      {/* Title & Actions Row */}
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3
-                            className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight leading-snug hover:underline cursor-pointer"
-                            onClick={() => setActiveModalProject(project)}
-                          >
-                            {project.title}
-                          </h3>
-                          {project.liveUrl && (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                              <span>Live</span>
-                            </span>
-                          )}
-                        </div>
-
-                        <div style={{ transform: 'translateZ(20px)' }} className="flex items-center gap-2">
-                          {project.liveUrl && (
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white glass-card transition-colors shadow-2xs"
-                              title="Open Live Deployment"
-                            >
-                              <ExternalLink className="w-3.5 h-3.5" />
-                              <span>Live Demo</span>
-                            </a>
-                          )}
-
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 glass-card transition-colors shadow-2xs"
-                            title="View GitHub Repository"
-                          >
-                            <Github className="w-3.5 h-3.5" />
-                            <span>Code</span>
-                            <ExternalLink className="w-3 h-3 text-slate-400" />
-                          </a>
-
-                          <button
-                            onClick={() => setActiveModalProject(project)}
-                            className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
-                          >
-                            <span>Case Study</span>
-                            <ChevronRight className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Project Screenshot / View Banner */}
-                      {project.image && (
-                        <div
-                          onClick={() => setActiveModalProject(project)}
-                          className="relative rounded-xl overflow-hidden border border-slate-200/80 dark:border-slate-800/80 bg-slate-900 group/shot cursor-pointer shadow-inner"
-                        >
+                    {project.image ? (
+                      <Card3D
+                        tiltIntensity={6}
+                        glareOpacity={0.25}
+                        scale={1.02}
+                        className="rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 bg-slate-900 shadow-xl cursor-pointer"
+                      >
+                        <div onClick={() => setActiveModalProject(project)}>
                           {/* Mini browser top bar */}
-                          <div className="flex items-center justify-between px-3 py-1.5 bg-slate-100 dark:bg-slate-900 border-b border-slate-200/70 dark:border-slate-800/70 text-[10px] font-mono text-slate-400">
+                          <div className="flex items-center justify-between px-3.5 py-2 bg-slate-100 dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800/80 text-[11px] font-mono text-slate-400">
                             <div className="flex items-center gap-1.5">
-                              <span className="w-2 h-2 rounded-full bg-rose-400/80" />
-                              <span className="w-2 h-2 rounded-full bg-amber-400/80" />
-                              <span className="w-2 h-2 rounded-full bg-emerald-400/80" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-rose-400/80" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
                             </div>
                             <span className="truncate max-w-[200px] text-slate-500 dark:text-slate-400">
-                              {project.liveUrl || `krunal-portfolio / ${project.id}`}
+                              {project.liveUrl || `krunal-ambaliya / ${project.id}`}
                             </span>
                             <span className="text-[10px] text-blue-500 font-semibold flex items-center gap-1">
-                              <Eye className="w-3 h-3" />
-                              <span className="hidden sm:inline">Preview</span>
+                              <Sparkles className="w-3 h-3" />
+                              <span>Inspect</span>
                             </span>
                           </div>
 
-                          <div className="relative aspect-[16/9] w-full overflow-hidden">
+                          {/* Image with smooth zoom on hover */}
+                          <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
                             <img
                               src={project.image}
-                              alt={`${project.title} screenshot preview`}
-                              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/shot:scale-105"
+                              alt={`${project.title} screenshot`}
+                              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                               loading="lazy"
                             />
-                            {/* Ambient hover sheen */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover/shot:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                              <span className="text-xs font-semibold text-white flex items-center gap-1.5">
-                                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                                <span>Click to inspect full architecture & features</span>
+                            {/* Hover overlay hint */}
+                            <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                              <span className="px-3.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-xs font-semibold shadow-lg backdrop-blur-md flex items-center gap-1.5">
+                                <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+                                <span>Click to View Full Details</span>
                               </span>
                             </div>
                           </div>
                         </div>
+                      </Card3D>
+                    ) : (
+                      <div className="aspect-[16/10] rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400">
+                        {renderIcon(project.iconType)}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Text / Description Column */}
+                  <div
+                    className={`lg:col-span-6 space-y-4 ${
+                      isImageOnLeft ? 'lg:order-2' : 'lg:order-1'
+                    }`}
+                  >
+                    {/* Top Meta Strip: Category & Project Index */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="w-7 h-7 rounded-lg bg-blue-500/10 dark:bg-blue-400/15 border border-blue-500/20 flex items-center justify-center">
+                          {renderIcon(project.iconType)}
+                        </span>
+                        <span className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                          {project.category === 'web-app'
+                            ? 'Web & E-Commerce'
+                            : project.category === 'healthcare'
+                            ? 'Healthcare'
+                            : 'AI & Developer Tools'}
+                        </span>
+                        {project.liveUrl && (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            <span>Live</span>
+                          </span>
+                        )}
+                      </div>
+
+                      <span className="font-mono text-xs font-bold text-slate-400 dark:text-slate-600">
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    {/* Project Title */}
+                    <h3
+                      className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                      onClick={() => setActiveModalProject(project)}
+                    >
+                      {project.title}
+                    </h3>
+
+                    {/* Role Pill */}
+                    {project.role && (
+                      <div className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                        Role: <span className="font-semibold text-slate-800 dark:text-slate-200">{project.role}</span>
+                      </div>
+                    )}
+
+                    {/* Clear, Human-Readable Description (Great for HR & Founders) */}
+                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {/* Key Highlights / Metrics */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                      {project.keyFeatures.slice(0, 2).map((feat, fIdx) => (
+                        <div
+                          key={fIdx}
+                          className="flex items-start gap-2 p-2 rounded-xl bg-white/40 dark:bg-white/5 border border-white/60 dark:border-white/5 text-xs text-slate-700 dark:text-slate-300 leading-snug"
+                        >
+                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0 mt-0.5" />
+                          <span className="line-clamp-2">{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tech Stack Tags */}
+                    <div className="pt-2 flex flex-wrap items-center gap-1.5">
+                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1 mr-1">
+                        <Layers className="w-3 h-3 text-blue-500" />
+                        <span>Stack:</span>
+                      </span>
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/70 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action CTA Buttons */}
+                    <div className="pt-3 flex flex-wrap items-center gap-2.5">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white transition-all duration-150 shadow-xs active:scale-95"
+                          title="Open Live Deployment"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span>Live Demo</span>
+                        </a>
                       )}
 
-                      {/* Description text */}
-                      <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-                        {project.description}
-                      </p>
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl glass-card text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-2xs"
+                        title="View GitHub Repository"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span>Source Code</span>
+                      </a>
 
-                      {/* Technologies row with 3D elevation */}
-                      <div style={{ transform: 'translateZ(10px)' }} className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 flex flex-wrap items-center gap-1.5">
-                        <span className="font-bold text-blue-600 dark:text-blue-400 mr-1 flex items-center gap-1">
-                          <Sparkles className="w-3 h-3" />
-                          <span>Technologies:</span>
-                        </span>
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="text-xs font-mono px-2 py-0.5 rounded-md bg-white/70 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                      <button
+                        onClick={() => setActiveModalProject(project)}
+                        className="inline-flex items-center gap-1 px-3 py-2 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline transition-colors cursor-pointer ml-auto"
+                      >
+                        <span>Case Study</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
                     </div>
-                  </Card3D>
+                  </div>
                 </div>
               </div>
-            ))}
+            );
+          })}
 
-            {filteredProjects.length === 0 && (
-              <div className="text-center py-12 text-slate-500 dark:text-slate-400 text-sm">
-                No projects found matching your search.
-              </div>
-            )}
-          </div>
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-12 text-slate-500 dark:text-slate-400 text-sm">
+              No projects found matching your search.
+            </div>
+          )}
         </div>
       </div>
 
