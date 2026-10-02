@@ -1,114 +1,108 @@
-import { ExperienceItem, EducationItem, ProjectItem, SkillItem } from '../types/portfolio';
+import {
+  ExperienceItem,
+  EducationItem,
+  ProjectItem,
+  SkillItem,
+  TechnicalStrength,
+  SpokenLanguage
+} from '../types/portfolio';
 
 export const PERSONAL_INFO = {
-  name: "Efrain / EFEELE.DEV",
-  displayRole: "Software Development Coordinator",
-  tagline: "Leading software planning, engineering, and digital systems transformation",
-  bio: "Experienced Software Development Coordinator and Full-Stack Engineer dedicated to orchestrating end-to-end software lifecycles, optimizing administrative workflows, and engineering high-performance web applications and AI developer tools.",
-  email: "contact@efeele.dev",
-  location: "Available for Remote & Global Collaboration",
-  socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://x.com",
-  },
+  name: "Krunal Ambaliya",
+  titleBadge: "Web Developer | Python Developer | AI & Cyber Security Enthusiast",
+  summary:
+    "Motivated Web Developer with hands-on experience in building responsive, user-centric web applications and AI-powered developer tools. Proficient in front-end development, Python, REST API integration, and modern JavaScript frameworks. Passionate about creating scalable web solutions while continuously expanding knowledge in Artificial Intelligence and Cyber Security.",
+  location: "Gujarat, India",
+  phone: "+91 6356334116",
+  phoneRaw: "+916356334116",
+  email: "krunalambaliya123@gmail.com",
+  githubUsername: "krunal-ambaliya",
+  githubUrl: "https://github.com/krunal-ambaliya",
+  whatsappUrl: "https://wa.me/916356334116",
+  focusAreas: [
+    { label: "Full Stack Web Development", icon: "code" },
+    { label: "Artificial Intelligence", icon: "brain" },
+    { label: "Cyber Security", icon: "shield" },
+    { label: "Prompt Engineering", icon: "terminal" }
+  ],
   stats: [
-    { label: "Years Experience", value: "5+" },
-    { label: "Projects Delivered", value: "18+" },
-    { label: "Platforms Managed", value: "8" },
-    { label: "Uptime Reliability", value: "99.9%" }
+    { label: "Projects Completed", value: "3+ Core" },
+    { label: "Academic CGPA", value: "8.5 / 10" },
+    { label: "Primary Languages", value: "Python & JS" },
+    { label: "Current Focus", value: "AI & Full Stack" }
   ]
 };
 
-// Exact Work Experience from Image 1
+// Exact Experience from Resume
 export const WORK_EXPERIENCE: ExperienceItem[] = [
   {
-    id: "exp-1",
-    role: "Software Development Coordinator",
-    company: "EFEELE.DEV",
-    period: "2021 - Present",
+    id: "exp-intern",
+    role: "Web Development Intern",
+    company: "Client & Software Projects",
+    period: "Internship Experience",
     current: true,
-    location: "Remote / Hybrid",
-    description: "I lead the planning, development, and implementation of software projects to optimize administrative processes and improve digital services. I manage and provide support for technology platforms, coordinating development teams to deliver efficient solutions.",
-    responsibilities: [
-      "Direct technical roadmaps, architecture definitions, and sprint milestones across multi-disciplinary engineering squads.",
-      "Spearhead administrative process digital transformation, cutting manual processing overhead by 42%.",
-      "Ensure robust platform stability, cloud security posture, and continuous delivery across production web platforms.",
-      "Conduct code audits, UI/UX consistency reviews, and mentoring for junior and mid-level developers."
+    location: "Gujarat, India",
+    description:
+      "Hands-on web development experience building modern, responsive dashboards, reusable UI components, and contributing to real-world client platforms.",
+    bulletPoints: [
+      "Developed responsive websites and dashboards using modern web technologies.",
+      "Built reusable UI components and optimized user experience.",
+      "Collaborated on real-world client projects involving web development and dashboard management."
     ],
-    technologies: ["React", "TypeScript", "Node.js", "Python", "Tailwind CSS", "MySQL", "Docker", "REST APIs"]
-  },
-  {
-    id: "exp-2",
-    role: "Software Development Coordinator",
-    company: "EFEELE.DEV",
-    period: "2019 - 2020",
-    current: false,
-    location: "Engineering Hub",
-    description: "I lead the planning, development, and implementation of software projects to optimize administrative processes and improve digital services. I manage and provide support for technology platforms, coordinating development teams to deliver efficient solutions.",
-    responsibilities: [
-      "Coordinated cross-functional stakeholders to formulate technical specifications and system requirement documents.",
-      "Engineered responsive web applications and database architectures for administrative automation.",
-      "Implemented automated deployment routines and standard testing procedures, reducing incident resolution times by 35%."
-    ],
-    technologies: ["JavaScript", "HTML5", "CSS3", "Bootstrap", "PHP", "MySQL", "Git"]
+    technologies: [
+      "JavaScript",
+      "React",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Bootstrap",
+      "MySQL",
+      "Git & GitHub"
+    ]
   }
 ];
 
-// Comprehensive Education Details
+// Exact Education from Resume
 export const EDUCATION_DETAILS: EducationItem[] = [
   {
-    id: "edu-1",
-    degree: "Bachelor of Science in Computer Science & Engineering",
-    institution: "Institute of Technology & Advanced Computer Studies",
-    period: "2015 - 2019",
-    location: "University Campus",
-    scoreOrHonors: "First Class with Distinction (Honors)",
-    description: "Comprehensive foundational and applied education in software systems, algorithmic problem solving, software engineering lifecycle, and database architectures.",
+    id: "edu-btech",
+    degree: "Bachelor of Technology (B.Tech)",
+    field: "Information Technology",
+    institution: "Atmiya University, Rajkot",
+    period: "2026 - Present",
+    location: "Rajkot, Gujarat, India",
+    scoreOrHonors: "Pursuing B.Tech Degree",
+    description:
+      "Advanced undergraduate curriculum in Information Technology focusing on modern software engineering, advanced computing architectures, AI fundamentals, and network security systems.",
     coursework: [
-      "Software Engineering & Agile Methodologies",
-      "Database Management Systems & Distributed Databases",
-      "Data Structures & Algorithm Design",
-      "Operating Systems & Computer Networking",
-      "Object-Oriented Analysis & Design (OOAD)",
-      "Web Technologies & Information Security"
-    ],
-    certifications: [
-      {
-        name: "AWS Certified Solutions Architect – Associate",
-        issuer: "Amazon Web Services",
-        year: "2023"
-      },
-      {
-        name: "Full-Stack Software Architecture Certification",
-        issuer: "Meta / Coursera",
-        year: "2022"
-      },
-      {
-        name: "Professional Agile Scrum Coordinator",
-        issuer: "Scrum Alliance",
-        year: "2021"
-      }
+      "Advanced Software Engineering",
+      "Distributed Computing & Cloud",
+      "Data Structures & Algorithms",
+      "Computer Networks & Security",
+      "Machine Learning & AI Foundations"
     ]
   },
   {
-    id: "edu-2",
-    degree: "Diploma in Advanced Software Development & Web Engineering",
-    institution: "Center for Informatics & Digital Systems",
-    period: "2013 - 2015",
-    location: "Technical Faculty",
-    scoreOrHonors: "Dean's List for Academic Excellence",
-    description: "Hands-on immersion in web standards, relational database modeling, responsive UI design, and modular application development.",
+    id: "edu-diploma",
+    degree: "Diploma in Information Technology",
+    field: "Information Technology",
+    institution: "Government Polytechnic, Rajkot",
+    period: "2022 - 2026",
+    location: "Rajkot, Gujarat, India",
+    scoreOrHonors: "CGPA: 8.5 / 10",
+    description:
+      "Rigorous technical foundation in web programming, relational database management, Linux environments, object-oriented programming, and responsive web design.",
     coursework: [
-      "Relational Database Design with SQL",
-      "Client-Side Programming (Modern JavaScript & DOM)",
-      "Server-Side Scripting & Application Architecture",
-      "Software Quality Assurance & Unit Testing"
+      "Web Development (HTML5, CSS3, JavaScript)",
+      "Database Management Systems (MySQL, SQL)",
+      "Python Programming",
+      "Operating Systems & Linux Administration",
+      "Software Testing & Quality Assurance"
     ]
   }
 ];
 
-// Exact Projects from Image 2
+// Exact Projects from Resume
 export const PROJECTS: ProjectItem[] = [
   {
     id: "property-management",
@@ -118,21 +112,24 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-blue-50 dark:bg-blue-950/70",
     badgeTextColor: "text-blue-600 dark:text-blue-400",
     badgeBorderColor: "border-blue-200 dark:border-blue-800/60",
-    description: "Developed a responsive property management platform featuring role-based dashboards for Admin, Agent, and Trader. Implemented authentication, profile management, reusable UI components, image upload with preview, charts, dynamic navigation, and responsive layouts to streamline property and job management.",
+    description:
+      "Developed a responsive property management platform featuring role-based dashboards for Admin, Agent, and Trader. Implemented authentication, profile management, reusable UI components, image upload with preview, charts, dynamic navigation, and responsive layouts to streamline property and job management.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "MySQL"],
-    role: "Lead Full-Stack Developer & Coordinator",
+    role: "Full-Stack Web Developer",
+    githubUrl: "https://github.com/krunal-ambaliya",
     keyFeatures: [
-      "Role-Based Access Control (RBAC): Dedicated portal dashboards tailored for Admin, Real Estate Agents, and Maintenance Traders.",
-      "Property Listings & Media Engine: Image upload with real-time browser preview, image optimization, and document storage.",
-      "Job & Maintenance Ticketing: End-to-end maintenance dispatching, status tracking, and trader job completion sign-offs.",
-      "Analytics Dashboard: Visual performance charts tracking tenant occupancy, rental revenue streams, and maintenance expenditure.",
-      "Responsive Layouts: Fluid mobile-first user experience tested across desktop, tablet, and smartphone form factors."
+      "Role-Based Dashboards: Dedicated portal workflows for Admin, Real Estate Agent, and Maintenance Trader.",
+      "Profile & Authentication Management: Secure credential handling, profile state updates, and session routing.",
+      "Property Listings & Media Uploads: Image upload with instant browser preview and validation.",
+      "Dynamic Navigation & Analytics: Interactive data charts tracking occupancy, job management tickets, and property listings.",
+      "Responsive Layout: Mobile-first responsive UI crafted with Bootstrap grid standards."
     ],
-    architectureDetails: "Built with a normalized MySQL database schema handling relational entities for properties, tenancy contracts, maintenance orders, and multi-tenant user authentication. Client-side utilizes lightweight modular JavaScript components and responsive Bootstrap grid structures.",
+    architectureDetails:
+      "Designed with relational MySQL data schemas linking property units, tenants, user roles, and maintenance requests. Frontend utilizes modular JavaScript event architectures and responsive Bootstrap layouts.",
     metrics: [
-      { label: "Dashboard Roles", value: "3 (Admin, Agent, Trader)" },
-      { label: "Admin Workflow Time", value: "-45% Reduction" },
-      { label: "Mobile Responsiveness", value: "100% Fluid" }
+      { label: "Role Portals", value: "3 (Admin, Agent, Trader)" },
+      { label: "Database Engine", value: "MySQL" },
+      { label: "Layout Standard", value: "100% Responsive" }
     ]
   },
   {
@@ -143,21 +140,24 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-indigo-50 dark:bg-indigo-950/70",
     badgeTextColor: "text-indigo-600 dark:text-indigo-400",
     badgeBorderColor: "border-indigo-200 dark:border-indigo-800/60",
-    description: "Developed a responsive clinic management website with doctor profile management, specialties, consultation fees, appointment scheduling, and doctor availability. Built an admin dashboard to manage doctors, services, pricing, schedules, and clinic content while optimizing responsiveness and user experience.",
+    description:
+      "Developed a responsive clinic management website with doctor profile management, specialties, consultation fees, appointment scheduling, and doctor availability. Built an admin dashboard to manage doctors, services, pricing, schedules, and clinic content while optimizing responsiveness and user experience.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    role: "Frontend Engineer & UX Architect",
+    role: "Front-End Developer & UI Designer",
+    githubUrl: "https://github.com/krunal-ambaliya",
     keyFeatures: [
-      "Interactive Appointment Booking: Patient self-service booking system with doctor availability time-slot calculation.",
-      "Doctor Directory & Profiles: Granular doctor biographies, medical specialties, verified credentials, and transparent consultation fees.",
-      "Clinic Admin Control Center: Comprehensive back-office suite to manage doctor rosters, clinic treatment packages, pricing matrices, and holiday schedules.",
-      "Dynamic Schedule Availability: Client-side validation preventing overlapping appointment times and automated confirmation state.",
-      "High-Conversion Patient UX: Clean healthcare aesthetic prioritizing readable typography, high-contrast CTAs, and accessible form controls."
+      "Doctor Profile Management: Profiles detailing medical specialties, qualifications, and consultation fee matrices.",
+      "Appointment Scheduling Engine: Patient self-booking interface calculating doctor real-time availability slots.",
+      "Admin Clinic Control Center: Centralized management dashboard for doctor rosters, treatment services, pricing, and clinic schedules.",
+      "Optimized UX & Accessibility: Responsive healthcare layout ensuring effortless booking on mobile and desktop devices.",
+      "Form Validations: Dynamic schedule verification to prevent scheduling conflicts."
     ],
-    architectureDetails: "Engineered with modular vanilla JavaScript event controllers, dynamic DOM slot rendering, and accessible form handling. Styled with custom healthcare theme extensions over Bootstrap.",
+    architectureDetails:
+      "Engineered with clean vanilla JavaScript logic, modular DOM manipulation, and customized Bootstrap UI components for healthcare ergonomics.",
     metrics: [
-      { label: "Booking Speed", value: "< 2 Minutes" },
-      { label: "Schedule Conflicts", value: "0 Double-Bookings" },
-      { label: "User Satisfaction", value: "98% Positive" }
+      { label: "Booking Workflow", value: "Seamless & Instant" },
+      { label: "Admin Console", value: "Full Clinic Control" },
+      { label: "Device Support", value: "Mobile & Desktop" }
     ]
   },
   {
@@ -168,50 +168,100 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-emerald-50 dark:bg-emerald-950/70",
     badgeTextColor: "text-emerald-600 dark:text-emerald-400",
     badgeBorderColor: "border-emerald-200 dark:border-emerald-800/60",
-    description: "Developed AI-powered developer tools and browser extensions for prompt generation, code review, security analysis, and performance optimization. Integrated multiple LLM APIs, implemented Markdown rendering, improved extension UI, optimized prompt workflows, and enhanced response rendering for accurate, structured AI outputs.",
-    technologies: ["Python", "JavaScript", "TypeScript", "HTML", "CSS", "REST APIs", "VS Code Extension API"],
-    role: "Principal Developer & AI Integration Lead",
-    keyFeatures: [
-      "Multi-LLM API Integration: Unified client adapter supporting streaming responses, token estimation, and fallback providers.",
-      "In-Editor & Browser Extension: Seamless IDE commands via VS Code Extension API alongside quick-action browser extensions.",
-      "Automated Code Review & Security Audit: Static analysis heuristics combined with AI reasoning to catch SQL injections, memory leaks, and anti-patterns.",
-      "High-Performance Markdown & Code Highlighting: Fast syntax rendering with copy-to-clipboard, diff view, and structured JSON output parsers.",
-      "Optimized Prompt Workflows: Pre-configured prompt templates with parameter substitution, temperature tuning, and system instruction management."
+    description:
+      "Developed AI-powered developer tools and browser extensions for prompt generation, code review, security analysis, and performance optimization. Integrated multiple LLM APIs, implemented Markdown rendering, improved extension UI, optimized prompt workflows, and enhanced response rendering for accurate, structured AI outputs.",
+    technologies: [
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "REST APIs",
+      "VS Code Extension API"
     ],
-    architectureDetails: "TypeScript-driven architecture using lightweight message passing between extension background service workers and active editor canvases. Python backend microservice provides token caching, vector embeddings, and multi-model routing.",
+    role: "AI Tool Developer & Extension Architect",
+    githubUrl: "https://github.com/krunal-ambaliya",
+    keyFeatures: [
+      "Multi-LLM API Integration: Seamless connections with modern AI model APIs for streaming structured responses.",
+      "VS Code & Browser Extension Ecosystem: In-editor developer actions using VS Code Extension API alongside quick-access browser extensions.",
+      "Automated Code Review & Security Analysis: AI heuristics to spot security vulnerabilities, code smells, and performance bottlenecks.",
+      "Rich Markdown Rendering: Custom code block syntax highlighting, copy shortcuts, and structured formatting.",
+      "Optimized Prompt Engineering Workflows: Context-aware prompt generation templates for rapid coding assistance."
+    ],
+    architectureDetails:
+      "Built with Python back-end scripts for prompt orchestration and RESTful endpoints, with TypeScript and JavaScript powering the VS Code extension and browser frontend interfaces.",
     metrics: [
-      { label: "Review Time Saved", value: "~4.5 hrs / week" },
-      { label: "Response Latency", value: "< 350ms streaming" },
-      { label: "Syntax Support", value: "25+ Languages" }
+      { label: "Integrated APIs", value: "Multiple LLMs" },
+      { label: "Code Analysis", value: "Security & Performance" },
+      { label: "Platform Coverage", value: "Browser + VS Code" }
     ]
   }
 ];
 
+// Exact Technical Skills from Resume
 export const SKILLS: SkillItem[] = [
-  // Frontend
-  { name: "JavaScript (ES6+)", category: "Frontend", proficiency: 95, highlight: true },
-  { name: "TypeScript", category: "Frontend", proficiency: 92, highlight: true },
-  { name: "React.js", category: "Frontend", proficiency: 90, highlight: true },
-  { name: "HTML5 / Semantic Web", category: "Frontend", proficiency: 98, highlight: true },
-  { name: "CSS3 / Modern Layouts", category: "Frontend", proficiency: 95, highlight: true },
-  { name: "Tailwind CSS", category: "Frontend", proficiency: 92, highlight: true },
-  { name: "Bootstrap 4/5", category: "Frontend", proficiency: 90, highlight: true },
-  // Backend & System
-  { name: "Node.js / Express", category: "Backend", proficiency: 88, highlight: true },
-  { name: "Python", category: "Backend", proficiency: 85, highlight: true },
-  { name: "RESTful API Design", category: "Backend", proficiency: 94, highlight: true },
-  { name: "Software Architecture", category: "Backend", proficiency: 90, highlight: true },
+  // Languages
+  { name: "Python", category: "Languages", proficiency: 90 },
+  { name: "JavaScript", category: "Languages", proficiency: 92 },
+  { name: "HTML5", category: "Languages", proficiency: 98 },
+  { name: "CSS3", category: "Languages", proficiency: 95 },
+  { name: "SQL", category: "Languages", proficiency: 86 },
+
+  // Frameworks & Libraries
+  { name: "React", category: "Frameworks & Libraries", proficiency: 88 },
+  { name: "Tailwind CSS", category: "Frameworks & Libraries", proficiency: 92 },
+  { name: "Bootstrap", category: "Frameworks & Libraries", proficiency: 94 },
+
+  // Web Technologies
+  { name: "Responsive Web Design", category: "Web Technologies", proficiency: 96 },
+  { name: "REST APIs", category: "Web Technologies", proficiency: 90 },
+  { name: "WordPress", category: "Web Technologies", proficiency: 85 },
+
   // Database
-  { name: "MySQL / RDBMS", category: "Database", proficiency: 92, highlight: true },
-  { name: "Database Schema Modeling", category: "Database", proficiency: 90, highlight: true },
-  { name: "Query Optimization", category: "Database", proficiency: 86 },
-  // Dev & Cloud Tools
-  { name: "Git & GitHub Workflows", category: "DevOps & Tools", proficiency: 95, highlight: true },
-  { name: "VS Code Extension API", category: "DevOps & Tools", proficiency: 88, highlight: true },
-  { name: "Browser Extension Dev", category: "DevOps & Tools", proficiency: 89, highlight: true },
-  { name: "Agile / Scrum Coordination", category: "DevOps & Tools", proficiency: 92, highlight: true },
-  // AI & APIs
-  { name: "LLM API Integrations", category: "AI & APIs", proficiency: 90, highlight: true },
-  { name: "Prompt Engineering", category: "AI & APIs", proficiency: 94, highlight: true },
-  { name: "AI Structured Output Parsing", category: "AI & APIs", proficiency: 92, highlight: true }
+  { name: "MySQL", category: "Database", proficiency: 88 },
+
+  // Tools
+  { name: "Git", category: "Tools", proficiency: 92 },
+  { name: "GitHub", category: "Tools", proficiency: 94 },
+  { name: "VS Code", category: "Tools", proficiency: 96 },
+  { name: "Linux", category: "Tools", proficiency: 85 }
+];
+
+// Exact Technical Strengths from Resume
+export const TECHNICAL_STRENGTHS: TechnicalStrength[] = [
+  {
+    name: "Front-End Web Development",
+    description: "Building responsive, modern, user-centric interfaces using React, JavaScript, HTML5, and CSS3."
+  },
+  {
+    name: "Responsive Web Design",
+    description: "Crafting fluid multi-device layouts utilizing Tailwind CSS, Bootstrap, and custom CSS grid architectures."
+  },
+  {
+    name: "REST API Integration",
+    description: "Connecting web front-ends with RESTful back-end endpoints and third-party web services."
+  },
+  {
+    name: "AI Tool Development",
+    description: "Engineering developer tools, browser extensions, and prompt workflows leveraging modern LLM APIs."
+  },
+  {
+    name: "Problem Solving",
+    description: "Algorithmic thinking, debugging complex application states, and optimizing software performance."
+  },
+  {
+    name: "Git & Version Control",
+    description: "Branching strategies, collaborative pull requests, merge conflict resolution, and code organization."
+  },
+  {
+    name: "Team Collaboration",
+    description: "Working effectively in multidisciplinary project settings, communicating technical requirements clearly."
+  }
+];
+
+// Languages from Resume
+export const SPOKEN_LANGUAGES: SpokenLanguage[] = [
+  { name: "Hindi", proficiency: "Native Proficiency", rating: 5 },
+  { name: "Gujarati", proficiency: "Native Proficiency", rating: 5 },
+  { name: "English", proficiency: "Professional Working Proficiency", rating: 4 }
 ];

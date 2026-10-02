@@ -3,14 +3,14 @@ import { PROJECTS } from '../data/portfolioData';
 import { ProjectItem } from '../types/portfolio';
 import { ProjectModal } from './ProjectModal';
 import {
-  ListChecks,
+  FileText,
   Home,
   Stethoscope,
   Code2,
   Search,
   ExternalLink,
   ChevronRight,
-  Filter
+  Github
 } from 'lucide-react';
 
 export const Projects: React.FC = () => {
@@ -51,21 +51,18 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 md:py-28 border-t border-slate-200/70 dark:border-slate-800/70 relative">
+    <section id="projects" className="py-16 md:py-24 border-t border-white/20 dark:border-white/10 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        {/* Section Header - Exact matching styling from Image 2 */}
-        <div className="flex items-center gap-3 sm:gap-4 mb-10">
-          {/* Blue circular icon badge */}
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white shrink-0 shadow-sm">
-            <ListChecks className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
+        {/* Section Header */}
+        <div className="flex items-center gap-3 sm:gap-4 mb-8">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white shrink-0 shadow-xs">
+            <FileText className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.2} />
           </div>
 
-          {/* Heading Text */}
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white uppercase font-sans">
             PROJECTS
           </h2>
 
-          {/* Blue accent line with circular dot */}
           <div className="flex-1 flex items-center ml-2">
             <div className="h-[3px] flex-1 bg-blue-600 dark:bg-blue-500 rounded-full" />
             <div className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-blue-500 ring-4 ring-blue-600/20 shrink-0 -ml-1" />
@@ -73,17 +70,17 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Filter controls & Search */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-12">
-          {/* Category Tabs */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-10">
+          {/* Category Tabs (Glassmorphic) */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-colors ${
+                className={`px-3.5 py-1.5 text-xs font-medium rounded-xl whitespace-nowrap transition-colors ${
                   selectedCategory === cat.id
                     ? 'bg-blue-600 text-white shadow-xs font-semibold'
-                    : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200/60 dark:border-slate-800'
+                    : 'glass-card text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {cat.label}
@@ -91,57 +88,72 @@ export const Projects: React.FC = () => {
             ))}
           </div>
 
-          {/* Search box */}
+          {/* Search box (Glassmorphic) */}
           <div className="relative sm:w-64">
             <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search stack or features..."
-              className="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500 transition-colors"
+              placeholder="Search technologies..."
+              className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl glass-card text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500 transition-colors"
             />
           </div>
         </div>
 
-        {/* Timeline Projects List - Exact match to Image 2 structure */}
+        {/* Timeline Projects List */}
         <div className="relative">
           {/* Continuous vertical timeline connector line */}
-          <div className="absolute left-6 sm:left-7 top-7 bottom-7 w-[2px] bg-blue-200 dark:bg-blue-900/60" />
+          <div className="absolute left-6 sm:left-7 top-7 bottom-7 w-[2px] bg-blue-200/80 dark:bg-blue-900/60" />
 
           <div className="space-y-12 sm:space-y-16">
             {filteredProjects.map((project) => (
               <div key={project.id} className="relative flex items-start gap-4 sm:gap-6 group">
-                {/* Custom Icon Box - Exact match to Image 2 */}
+                {/* Custom Icon Box - Glassmorphic */}
                 <div
                   className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 z-10 transition-transform duration-200 group-hover:scale-105 shadow-xs ${
                     project.id === 'property-management'
-                      ? 'bg-blue-50 dark:bg-[#151c2e] border border-blue-200/80 dark:border-blue-800/60 text-blue-700 dark:text-blue-300'
+                      ? 'bg-blue-50/80 dark:bg-[#151c2e]/80 border border-blue-200/80 dark:border-blue-800/60 text-blue-700 dark:text-blue-300'
                       : project.id === 'dentray-clinic'
-                      ? 'bg-indigo-50 dark:bg-[#1a182e] border border-indigo-200/80 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300'
-                      : 'bg-emerald-50 dark:bg-[#132520] border border-emerald-200/80 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300'
+                      ? 'bg-indigo-50/80 dark:bg-[#1a182e]/80 border border-indigo-200/80 dark:border-indigo-800/60 text-indigo-700 dark:text-indigo-300'
+                      : 'bg-emerald-50/80 dark:bg-[#132520]/80 border border-emerald-200/80 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300'
                   }`}
                 >
                   {renderIcon(project.iconType)}
                 </div>
 
-                {/* Content Column */}
-                <div className="flex-1 pt-1 space-y-2.5">
+                {/* Content Column in Glass Card */}
+                <div className="flex-1 p-5 sm:p-6 rounded-2xl glass-card space-y-2.5 hover:border-blue-400/50 transition-colors">
                   {/* Title in signature blue */}
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight leading-snug hover:underline cursor-pointer"
+                    <h3
+                      className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight leading-snug hover:underline cursor-pointer"
                       onClick={() => setActiveModalProject(project)}
                     >
                       {project.title}
                     </h3>
 
-                    <button
-                      onClick={() => setActiveModalProject(project)}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    >
-                      <span>Case Study</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-lg text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 glass-card transition-colors"
+                        title="View GitHub Repository"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span>Code</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+
+                      <button
+                        onClick={() => setActiveModalProject(project)}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                      >
+                        <span>Details</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
 
                   {/* Description text */}
@@ -149,7 +161,7 @@ export const Projects: React.FC = () => {
                     {project.description}
                   </p>
 
-                  {/* Technologies row - Exact match to Image 2 */}
+                  {/* Technologies row */}
                   <div className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 pt-1">
                     <span className="font-bold text-blue-600 dark:text-blue-400 mr-1.5">
                       Technologies:
