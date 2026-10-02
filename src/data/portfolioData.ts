@@ -112,7 +112,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-amber-50 dark:bg-amber-950/70",
     badgeTextColor: "text-amber-600 dark:text-amber-400",
     badgeBorderColor: "border-amber-200 dark:border-amber-800/60",
-    image: "/src/assets/images/timect_storefront_1790950530653.jpg",
+    image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790964008/Screenshot_2026-10-02_232857_treo5w.png",
     description:
       "Production-ready luxury storefront and comprehensive back-office admin suite powered by Next.js 16 (App Router) and Neon PostgreSQL. Features full product variant catalogs, corporate gifting, Cloudinary media management, and JWT-secured admin controls with modern glassmorphism aesthetics.",
     technologies: ["Next.js 16", "React", "TypeScript", "PostgreSQL", "Tailwind CSS", "Cloudinary"],
@@ -141,7 +141,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-emerald-50 dark:bg-emerald-950/70",
     badgeTextColor: "text-emerald-600 dark:text-emerald-400",
     badgeBorderColor: "border-emerald-200 dark:border-emerald-800/60",
-    image: "/src/assets/images/paras_jewells_ui_1790952223506.jpg",
+    image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790964007/Screenshot_2026-10-02_232943_sxkzr9.png",
     description:
       "Engineered an e-commerce digital showroom for Paras Jewells showcasing gold and diamond collections, purity specification filters (14K/18K/22K), diamond cut clarity matrices, and direct email inquiry ordering.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion", "Lucide Icons"],
@@ -170,7 +170,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-indigo-50 dark:bg-indigo-950/70",
     badgeTextColor: "text-indigo-600 dark:text-indigo-400",
     badgeBorderColor: "border-indigo-200 dark:border-indigo-800/60",
-    image: "/src/assets/images/clinic_booking_1790950566078.jpg",
+    image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790964008/Screenshot_2026-10-02_232811_acewsn.png",
     description:
       "Developed a comprehensive healthcare clinic portal and patient appointment scheduling system. Features specialist doctor directories, consultation fee matrices, real-time availability slot booking, and administrative clinic controls.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "REST APIs", "Bootstrap"],
@@ -199,7 +199,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-blue-50 dark:bg-blue-950/70",
     badgeTextColor: "text-blue-600 dark:text-blue-400",
     badgeBorderColor: "border-blue-200 dark:border-blue-800/60",
-    image: "/src/assets/images/property_dashboard_1790950546758.jpg",
+    image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790963834/Screenshot_2026-10-02_232626_e1uvc1.png",
     description:
       "Engineered PropDoc, a multi-role property and asset documentation platform. Features tailored workflows for Admins, Real Estate Agents, and Maintenance Traders with lease tracking, unit listings, and repair dispatch ticketing.",
     technologies: ["Python", "JavaScript", "MySQL", "Bootstrap", "REST APIs", "HTML5/CSS3"],
@@ -227,7 +227,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-emerald-50 dark:bg-emerald-950/70",
     badgeTextColor: "text-emerald-600 dark:text-emerald-400",
     badgeBorderColor: "border-emerald-200 dark:border-emerald-800/60",
-    image: "/src/assets/images/ai_prompt_studio_1790950585780.jpg",
+    image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790964918/ai_prompt_studio_1790950585780_wqcoht.jpg",
     description:
       "Developed AI-powered developer tools and browser extensions for prompt generation, code review, security analysis, and performance optimization. Integrated multiple LLM APIs, implemented Markdown rendering, improved extension UI, optimized prompt workflows, and enhanced response rendering for accurate, structured AI outputs.",
     technologies: [
