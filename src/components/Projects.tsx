@@ -8,11 +8,13 @@ import {
   Home,
   Stethoscope,
   Code2,
+  ShoppingBag,
   Search,
   ExternalLink,
   ChevronRight,
   Github,
-  Sparkles
+  Sparkles,
+  Eye
 } from 'lucide-react';
 
 export const Projects: React.FC = () => {
@@ -22,7 +24,7 @@ export const Projects: React.FC = () => {
 
   const categories = [
     { id: 'all', label: 'All Projects' },
-    { id: 'web-app', label: 'Web Applications' },
+    { id: 'web-app', label: 'Web & E-Commerce' },
     { id: 'healthcare', label: 'Healthcare & Clinic' },
     { id: 'developer-tools', label: 'AI & Developer Tools' }
   ];
@@ -41,6 +43,8 @@ export const Projects: React.FC = () => {
 
   const renderIcon = (type: ProjectItem['iconType']) => {
     switch (type) {
+      case 'shopping-bag':
+        return <ShoppingBag className="w-6 h-6 text-amber-600 dark:text-amber-400" strokeWidth={2.2} />;
       case 'home':
         return <Home className="w-6 h-6 text-blue-700 dark:text-blue-300" strokeWidth={2.2} />;
       case 'stethoscope':
@@ -97,7 +101,7 @@ export const Projects: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search technologies..."
+              placeholder="Search technologies, title..."
               className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl glass-card text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-hidden focus:ring-1 focus:ring-blue-500 transition-colors"
             />
           </div>
@@ -114,7 +118,9 @@ export const Projects: React.FC = () => {
                 {/* 3D Floating Icon Box on timeline */}
                 <div
                   className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 z-10 transition-transform duration-200 group-hover:scale-110 shadow-md ${
-                    project.id === 'property-management'
+                    project.id === 'timect-ecommerce'
+                      ? 'bg-amber-50/90 dark:bg-[#251e12]/90 border border-amber-200/80 dark:border-amber-800/60'
+                      : project.id === 'property-management'
                       ? 'bg-blue-50/90 dark:bg-[#151c2e]/90 border border-blue-200/80 dark:border-blue-800/60'
                       : project.id === 'dentray-clinic'
                       ? 'bg-indigo-50/90 dark:bg-[#1a182e]/90 border border-indigo-200/80 dark:border-indigo-800/60'
@@ -132,17 +138,38 @@ export const Projects: React.FC = () => {
                     scale={1.018}
                     className="p-5 sm:p-6 rounded-2xl glass-card hover:border-blue-400/80 dark:hover:border-blue-500/60 transition-all duration-200 shadow-md"
                   >
-                    <div style={{ transform: 'translateZ(14px)' }} className="space-y-3">
+                    <div style={{ transform: 'translateZ(14px)' }} className="space-y-4">
                       {/* Title & Actions Row */}
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <h3
-                          className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight leading-snug hover:underline cursor-pointer"
-                          onClick={() => setActiveModalProject(project)}
-                        >
-                          {project.title}
-                        </h3>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3
+                            className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight leading-snug hover:underline cursor-pointer"
+                            onClick={() => setActiveModalProject(project)}
+                          >
+                            {project.title}
+                          </h3>
+                          {project.liveUrl && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                              <span>Live</span>
+                            </span>
+                          )}
+                        </div>
 
                         <div style={{ transform: 'translateZ(20px)' }} className="flex items-center gap-2">
+                          {project.liveUrl && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white glass-card transition-colors shadow-2xs"
+                              title="Open Live Deployment"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                              <span>Live Demo</span>
+                            </a>
+                          )}
+
                           <a
                             href={project.githubUrl}
                             target="_blank"
@@ -164,6 +191,46 @@ export const Projects: React.FC = () => {
                           </button>
                         </div>
                       </div>
+
+                      {/* Project Screenshot / View Banner */}
+                      {project.image && (
+                        <div
+                          onClick={() => setActiveModalProject(project)}
+                          className="relative rounded-xl overflow-hidden border border-slate-200/80 dark:border-slate-800/80 bg-slate-900 group/shot cursor-pointer shadow-inner"
+                        >
+                          {/* Mini browser top bar */}
+                          <div className="flex items-center justify-between px-3 py-1.5 bg-slate-100 dark:bg-slate-900 border-b border-slate-200/70 dark:border-slate-800/70 text-[10px] font-mono text-slate-400">
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-2 h-2 rounded-full bg-rose-400/80" />
+                              <span className="w-2 h-2 rounded-full bg-amber-400/80" />
+                              <span className="w-2 h-2 rounded-full bg-emerald-400/80" />
+                            </div>
+                            <span className="truncate max-w-[200px] text-slate-500 dark:text-slate-400">
+                              {project.liveUrl || `krunal-portfolio / ${project.id}`}
+                            </span>
+                            <span className="text-[10px] text-blue-500 font-semibold flex items-center gap-1">
+                              <Eye className="w-3 h-3" />
+                              <span className="hidden sm:inline">Preview</span>
+                            </span>
+                          </div>
+
+                          <div className="relative aspect-[16/9] w-full overflow-hidden">
+                            <img
+                              src={project.image}
+                              alt={`${project.title} screenshot preview`}
+                              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/shot:scale-105"
+                              loading="lazy"
+                            />
+                            {/* Ambient hover sheen */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover/shot:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                              <span className="text-xs font-semibold text-white flex items-center gap-1.5">
+                                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                                <span>Click to inspect full architecture & features</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
 
                       {/* Description text */}
                       <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed font-normal">

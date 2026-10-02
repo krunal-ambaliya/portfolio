@@ -18,6 +18,8 @@ export const PERSONAL_INFO = {
   email: "krunalambaliya123@gmail.com",
   githubUsername: "krunal-ambaliya",
   githubUrl: "https://github.com/krunal-ambaliya",
+  discordUsername: "krues7",
+  discordUrl: "https://discord.com/users/krues7",
   whatsappUrl: "https://wa.me/916356334116",
   focusAreas: [
     { label: "Full Stack Web Development", icon: "code" },
@@ -26,7 +28,7 @@ export const PERSONAL_INFO = {
     { label: "Prompt Engineering", icon: "terminal" }
   ],
   stats: [
-    { label: "Projects Completed", value: "3+ Core" },
+    { label: "Projects Completed", value: "4+ Production" },
     { label: "Academic CGPA", value: "8.5 / 10" },
     { label: "Primary Languages", value: "Python & JS" },
     { label: "Current Focus", value: "AI & Full Stack" }
@@ -102,8 +104,37 @@ export const EDUCATION_DETAILS: EducationItem[] = [
   }
 ];
 
-// Exact Projects from Resume
+// Exact Projects from Resume & Live Deployments
 export const PROJECTS: ProjectItem[] = [
+  {
+    id: "timect-ecommerce",
+    title: "Timect — Modern E-Commerce Storefront & Admin Portal",
+    category: "web-app",
+    iconType: "shopping-bag",
+    badgeBg: "bg-amber-50 dark:bg-amber-950/70",
+    badgeTextColor: "text-amber-600 dark:text-amber-400",
+    badgeBorderColor: "border-amber-200 dark:border-amber-800/60",
+    image: "/src/assets/images/timect_storefront_1790950530653.jpg",
+    description:
+      "Production-ready luxury storefront and comprehensive back-office admin suite powered by Next.js 16 (App Router) and Neon PostgreSQL. Features full product variant catalogs, corporate gifting, Cloudinary media management, and JWT-secured admin controls with modern glassmorphism aesthetics.",
+    technologies: ["Next.js 16", "React", "TypeScript", "PostgreSQL", "Tailwind CSS", "Cloudinary"],
+    role: "Full-Stack Architect & Lead Developer",
+    liveUrl: "https://timect-new.vercel.app/",
+    githubUrl: "https://github.com/krunal-ambaliya",
+    keyFeatures: [
+      "Modern E-Commerce Storefront: High-converting luxury shopping experience with instant catalog browsing, product variants, and corporate gifting workflows.",
+      "Comprehensive Back-Office Admin (/admin): Intuitive business management suite covering inventory, hero banners, content, media, and customer inboxes.",
+      "Production-Grade Performance: Built with Next.js 16 (App Router) & serverless Neon PostgreSQL for sub-second page loads and fluid navigation.",
+      "Secure Architecture: Protected admin routes with JWT session validation, role access control, and edge proxy security."
+    ],
+    architectureDetails:
+      "Engineered with Next.js 16 App Router, TypeScript, and serverless Neon PostgreSQL. Styled with custom Fuse design tokens (16px radii, frosted glass surfaces, micro-animations) and integrated Cloudinary CDN for optimized media delivery.",
+    metrics: [
+      { label: "Tech Stack", value: "Next.js 16 + Neon SQL" },
+      { label: "Live Deployment", value: "Vercel Production" },
+      { label: "Admin Suite", value: "Complete Business Control" }
+    ]
+  },
   {
     id: "property-management",
     title: "Property Management Web Application",
@@ -112,6 +143,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-blue-50 dark:bg-blue-950/70",
     badgeTextColor: "text-blue-600 dark:text-blue-400",
     badgeBorderColor: "border-blue-200 dark:border-blue-800/60",
+    image: "/src/assets/images/property_dashboard_1790950546758.jpg",
     description:
       "Developed a responsive property management platform featuring role-based dashboards for Admin, Agent, and Trader. Implemented authentication, profile management, reusable UI components, image upload with preview, charts, dynamic navigation, and responsive layouts to streamline property and job management.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "MySQL"],
@@ -140,6 +172,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-indigo-50 dark:bg-indigo-950/70",
     badgeTextColor: "text-indigo-600 dark:text-indigo-400",
     badgeBorderColor: "border-indigo-200 dark:border-indigo-800/60",
+    image: "/src/assets/images/clinic_booking_1790950566078.jpg",
     description:
       "Developed a responsive clinic management website with doctor profile management, specialties, consultation fees, appointment scheduling, and doctor availability. Built an admin dashboard to manage doctors, services, pricing, schedules, and clinic content while optimizing responsiveness and user experience.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
@@ -168,6 +201,7 @@ export const PROJECTS: ProjectItem[] = [
     badgeBg: "bg-emerald-50 dark:bg-emerald-950/70",
     badgeTextColor: "text-emerald-600 dark:text-emerald-400",
     badgeBorderColor: "border-emerald-200 dark:border-emerald-800/60",
+    image: "/src/assets/images/ai_prompt_studio_1790950585780.jpg",
     description:
       "Developed AI-powered developer tools and browser extensions for prompt generation, code review, security analysis, and performance optimization. Integrated multiple LLM APIs, implemented Markdown rendering, improved extension UI, optimized prompt workflows, and enhanced response rendering for accurate, structured AI outputs.",
     technologies: [

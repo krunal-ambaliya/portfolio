@@ -5,12 +5,14 @@ import { SkillItem } from '../types/portfolio';
 interface TechCard3DProps {
   skill: SkillItem;
   onClick?: () => void;
+  onMouseEnter?: () => void;
   isSelected?: boolean;
 }
 
 export const TechCard3D: React.FC<TechCard3DProps> = ({
   skill,
   onClick,
+  onMouseEnter,
   isSelected = false
 }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
@@ -40,6 +42,9 @@ export const TechCard3D: React.FC<TechCard3DProps> = ({
 
   const handleMouseEnter = () => {
     setIsHovered(true);
+    if (onMouseEnter) {
+      onMouseEnter();
+    }
   };
 
   const handleMouseLeave = () => {

@@ -133,7 +133,7 @@ export const SkillsSection: React.FC = () => {
 
               <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-blue-500 animate-pulse" />
-                <span>Hover to tilt in 3D · Click to inspect</span>
+                <span>Hover any skill to view description & proficiency</span>
               </div>
             </div>
 
@@ -144,6 +144,7 @@ export const SkillsSection: React.FC = () => {
                   key={skill.name}
                   skill={skill}
                   isSelected={inspectedSkill?.name === skill.name}
+                  onMouseEnter={() => setInspectedSkill(skill)}
                   onClick={() => setInspectedSkill(skill)}
                 />
               ))}

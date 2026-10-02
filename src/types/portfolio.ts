@@ -26,7 +26,7 @@ export interface ProjectItem {
   id: string;
   title: string;
   category: 'web-app' | 'healthcare' | 'developer-tools' | 'all';
-  iconType: 'home' | 'stethoscope' | 'code';
+  iconType: 'home' | 'stethoscope' | 'code' | 'shopping-bag';
   badgeBg: string;
   badgeTextColor: string;
   badgeBorderColor: string;
@@ -38,6 +38,7 @@ export interface ProjectItem {
   liveUrl?: string;
   githubUrl: string;
   metrics?: { label: string; value: string }[];
+  image?: string;
 }
 
 export interface SkillItem {
