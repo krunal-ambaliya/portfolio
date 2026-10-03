@@ -1,60 +1,95 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { AnimatePresence, MotionConfig } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Marquee } from './components/Marquee';
+import { About } from './components/About';
 import { Projects } from './components/Projects';
+import { Skills } from './components/Skills';
 import { Experience } from './components/Experience';
-import { Education } from './components/Education';
-import { SkillsSection } from './components/SkillsSection';
-import { ContactSection } from './components/ContactSection';
+import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { Backdrop } from './components/Backdrop';
+import { Intro, INTRO_DELAY_S, shouldPlayIntro } from './components/Intro';
+import { SKILL_GROUPS } from './data/portfolioData';
+import { destroySmoothScroll, initSmoothScroll, lockScroll, scrollToId } from './lib/smoothScroll';
+
+// New key so the light redesign is the default even for visitors who saw the old dark-only site
+const THEME_KEY = 'theme';
+
+const MARQUEE_ITEMS = ['Python', 'JavaScript', 'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'MySQL', 'PostgreSQL', 'REST APIs'].filter(
+  (s) => SKILL_GROUPS.some((g) => g.skills.includes(s))
+);
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('portfolio_theme');
-      if (stored) return stored === 'dark';
-      return true; // Default to dark mode
-    }
-    return true;
-  });
+  const [darkMode, setDarkMode] = useState<boolean>(() =>
+    document.documentElement.classList.contains('dark')
+  );
+  const [introPlaying, setIntroPlaying] = useState(shouldPlayIntro);
+  // Entrance animations wait for the intro curtain; decided once on load
+  const [entranceDelay] = useState(() => (introPlaying ? INTRO_DELAY_S : 0.15));
+  const endIntro = useCallback(() => setIntroPlaying(false), []);
 
   useEffect(() => {
-    const root = document.documentElement;
-    const body = document.body;
-    if (darkMode) {
-      root.classList.add('dark');
-      body.classList.add('dark');
-      localStorage.setItem('portfolio_theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      body.classList.remove('dark');
-      localStorage.setItem('portfolio_theme', 'light');
+    document.documentElement.classList.toggle('dark', darkMode);
+    try {
+      localStorage.setItem(THEME_KEY, darkMode ? 'dark' : 'light');
+    } catch {
+      // Storage unavailable — theme just won't persist
     }
   }, [darkMode]);
 
-  return (
-    <div className="relative min-h-screen bg-slate-50 dark:bg-[#08090d] text-slate-800 dark:text-slate-100 transition-colors duration-200 overflow-x-hidden">
-      {/* Ambient gradient orbs. Radial gradients instead of filter: blur() — huge blurred
-          layers exhaust iOS Safari's GPU memory and it stops painting the rest of the page. */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden select-none z-0">
-        <div className="ambient-orb -top-32 -right-32 w-[550px] h-[550px] [--orb:rgb(59_130_246/0.14)] dark:[--orb:rgb(37_99_235/0.2)]" />
-        <div className="ambient-orb top-[35%] -left-40 w-[600px] h-[600px] [--orb:rgb(99_102_241/0.12)] dark:[--orb:rgb(79_70_229/0.16)]" />
-        <div className="ambient-orb top-[65%] -right-32 w-[500px] h-[500px] [--orb:rgb(20_184_166/0.12)] dark:[--orb:rgb(5_150_105/0.14)]" />
-        <div className="ambient-orb -bottom-32 left-1/3 w-[550px] h-[550px] [--orb:rgb(168_85_247/0.12)] dark:[--orb:rgb(126_34_206/0.14)]" />
-      </div>
+  useEffect(() => {
+    initSmoothScroll();
 
-      <div className="relative z-10">
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-        <main id="main-content">
-          <Hero />
-          <Projects />
-          <Experience />
-          <Education />
-          <SkillsSection />
-          <ContactSection />
-        </main>
-        <Footer />
+    // Route every in-page anchor through the smooth scroller
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
+      const id = link?.getAttribute('href')?.slice(1);
+      if (!id || !document.getElementById(id)) return;
+      e.preventDefault();
+      scrollToId(id);
+      history.replaceState(null, '', `#${id}`);
+    };
+    document.addEventListener('click', onClick);
+
+    return () => {
+      document.removeEventListener('click', onClick);
+      destroySmoothScroll();
+    };
+  }, []);
+
+  // Keep the page still while the intro covers it
+  useEffect(() => {
+    if (!introPlaying) return;
+    lockScroll(true);
+    return () => lockScroll(false);
+  }, [introPlaying]);
+
+  return (
+    // reducedMotion="user": honour prefers-reduced-motion for every motion component
+    <MotionConfig reducedMotion="user">
+      <AnimatePresence>{introPlaying && <Intro onDone={endIntro} />}</AnimatePresence>
+
+      <Backdrop />
+
+      {/* No background here: the body paints the base colour and the backdrop shows through */}
+      <div className="relative z-[1] min-h-screen overflow-x-clip text-fg">
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} delay={entranceDelay} />
+        <div className="lg:pl-[17rem]">
+          <main id="main-content">
+            <Hero delay={entranceDelay} />
+            <Marquee items={MARQUEE_ITEMS} />
+            <About />
+            <Projects />
+            <Skills />
+            <Experience />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </MotionConfig>
   );
 }

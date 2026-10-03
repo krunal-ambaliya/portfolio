@@ -2,16 +2,27 @@ import {
   ExperienceItem,
   EducationItem,
   ProjectItem,
-  SkillItem,
+  ProjectCategory,
+  SkillGroupItem,
   TechnicalStrength,
   SpokenLanguage
 } from '../types/portfolio';
 
 export const PERSONAL_INFO = {
   name: "Krunal Ambaliya",
+  firstName: "Krunal",
+  role: "Web Developer · Python Developer",
   titleBadge: "Web Developer | Python Developer | AI & Cyber Security Enthusiast",
+  headline: "I build clean, useful digital experiences.",
+  intro:
+    "Developer focused on modern web applications, Python development and practical software solutions.",
   summary:
     "Motivated Web Developer with hands-on experience in building responsive, user-centric web applications and AI-powered developer tools. Proficient in front-end development, Python, REST API integration, and modern JavaScript frameworks. Passionate about creating scalable web solutions while continuously expanding knowledge in Artificial Intelligence and Cyber Security.",
+  // Condensed version of the summary used in the About section
+  aboutLead:
+    "I build responsive, user-centric web applications and AI-powered developer tools.",
+  aboutBody:
+    "My work spans front-end development, Python, REST API integration and modern JavaScript frameworks. I care about scalable web solutions — and keep expanding my knowledge in Artificial Intelligence and Cyber Security.",
   location: "Gujarat, India",
   email: "krunalambaliya123@gmail.com",
   emailInquiryUrl: "mailto:krunalambaliya123@gmail.com?subject=Project%20Inquiry%20or%20Opportunity",
@@ -19,6 +30,14 @@ export const PERSONAL_INFO = {
   githubUrl: "https://github.com/krunal-ambaliya",
   discordUsername: "krues7",
   discordUrl: "https://discord.com/users/krues7",
+  // Add your LinkedIn profile URL here to show it in the contact section and footer
+  linkedinUrl: "",
+  facts: [
+    { label: "Based in", value: "Gujarat, India" },
+    { label: "Focus", value: "Web Development · Python" },
+    { label: "Education", value: "Diploma in IT · B.Tech IT" },
+    { label: "Interests", value: "AI · Cyber Security · Prompt Engineering · Software Development" }
+  ],
   focusAreas: [
     { label: "Full Stack Web Development", icon: "code" },
     { label: "Artificial Intelligence", icon: "brain" },
@@ -26,12 +45,19 @@ export const PERSONAL_INFO = {
     { label: "Prompt Engineering", icon: "terminal" }
   ],
   stats: [
-    { label: "Projects Completed", value: "5+ Production" },
-    { label: "Academic CGPA", value: "8.5 / 10" },
-    { label: "Primary Languages", value: "Python & JS" },
-    { label: "Current Focus", value: "AI & Full Stack" }
+    { label: "Production projects", value: "5+" },
+    { label: "Academic CGPA", value: "8.5/10" },
+    { label: "Primary languages", value: "Python & JS" },
+    { label: "Current focus", value: "AI & Full Stack" }
   ]
 };
+
+export const PROJECT_CATEGORIES: { id: ProjectCategory | 'all'; label: string }[] = [
+  { id: 'all', label: 'All' },
+  { id: 'web-app', label: 'Web & E-Commerce' },
+  { id: 'healthcare', label: 'Healthcare' },
+  { id: 'developer-tools', label: 'AI & Developer Tools' }
+];
 
 // Exact Experience from Resume
 export const WORK_EXPERIENCE: ExperienceItem[] = [
@@ -106,12 +132,11 @@ export const EDUCATION_DETAILS: EducationItem[] = [
 export const PROJECTS: ProjectItem[] = [
   {
     id: "timect-ecommerce",
+    name: "Timect",
     title: "Timect — Modern E-Commerce Storefront & Admin Portal",
     category: "web-app",
-    iconType: "shopping-bag",
-    badgeBg: "bg-amber-50 dark:bg-amber-950/70",
-    badgeTextColor: "text-amber-600 dark:text-amber-400",
-    badgeBorderColor: "border-amber-200 dark:border-amber-800/60",
+    summary: "Luxury e-commerce storefront with a complete back-office admin suite.",
+    highlights: ["Product variants & gifting", "Admin dashboard", "JWT-secured routes"],
     image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790964008/Screenshot_2026-10-02_232857_treo5w.png",
     description:
       "Production-ready luxury storefront and comprehensive back-office admin suite powered by Next.js 16 (App Router) and Neon PostgreSQL. Features full product variant catalogs, corporate gifting, Cloudinary media management, and JWT-secured admin controls with modern glassmorphism aesthetics.",
@@ -135,12 +160,11 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "paras-jewells",
+    name: "Paras Jewells",
     title: "Paras Jewells — Luxury Jewellery & Diamond Store",
     category: "web-app",
-    iconType: "shopping-bag",
-    badgeBg: "bg-emerald-50 dark:bg-emerald-950/70",
-    badgeTextColor: "text-emerald-600 dark:text-emerald-400",
-    badgeBorderColor: "border-emerald-200 dark:border-emerald-800/60",
+    summary: "Digital showroom for a gold and diamond jewellery store.",
+    highlights: ["Purity & cut filters", "Curated collections", "Email inquiries"],
     image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790964007/Screenshot_2026-10-02_232943_sxkzr9.png",
     description:
       "Engineered an e-commerce digital showroom for Paras Jewells showcasing gold and diamond collections, purity specification filters (14K/18K/22K), diamond cut clarity matrices, and direct email inquiry ordering.",
@@ -164,12 +188,11 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "clinic-doctor",
+    name: "CarePulse / Dentray",
     title: "CarePulse / Dentray — Clinic & Doctor Appointment Booking",
     category: "healthcare",
-    iconType: "stethoscope",
-    badgeBg: "bg-indigo-50 dark:bg-indigo-950/70",
-    badgeTextColor: "text-indigo-600 dark:text-indigo-400",
-    badgeBorderColor: "border-indigo-200 dark:border-indigo-800/60",
+    summary: "Clinic portal with a doctor directory and real-time appointment booking.",
+    highlights: ["Slot booking", "Doctor profiles", "Clinic admin"],
     image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790964008/Screenshot_2026-10-02_232811_acewsn.png",
     description:
       "Developed a comprehensive healthcare clinic portal and patient appointment scheduling system. Features specialist doctor directories, consultation fee matrices, real-time availability slot booking, and administrative clinic controls.",
@@ -193,17 +216,17 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "propdoc-property-management",
+    name: "PropDoc",
     title: "PropDoc — Property & Tenancy Management System",
     category: "web-app",
-    iconType: "home",
-    badgeBg: "bg-blue-50 dark:bg-blue-950/70",
-    badgeTextColor: "text-blue-600 dark:text-blue-400",
-    badgeBorderColor: "border-blue-200 dark:border-blue-800/60",
+    summary: "Multi-role property and tenancy management platform.",
+    highlights: ["Role-based portals", "Lease records", "Maintenance tickets"],
     image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790963834/Screenshot_2026-10-02_232626_e1uvc1.png",
     description:
       "Engineered PropDoc, a multi-role property and asset documentation platform. Features tailored workflows for Admins, Real Estate Agents, and Maintenance Traders with lease tracking, unit listings, and repair dispatch ticketing.",
     technologies: ["Python", "JavaScript", "MySQL", "Bootstrap", "REST APIs", "HTML5/CSS3"],
     role: "Full-Stack Software Engineer",
+    liveUrl: "https://propdoc-site.vercel.app/",
     githubUrl: "https://github.com/krunal-ambaliya/propdoc",
     keyFeatures: [
       "Multi-Role Portals: Distinct permission tiers and dashboards for Property Owners/Admins, Agents, and Traders.",
@@ -214,6 +237,7 @@ export const PROJECTS: ProjectItem[] = [
     architectureDetails:
       "Engineered with Python backend logic, structured MySQL relational schemas, and responsive Bootstrap frontend interfaces for high data density and cross-device accessibility.",
     metrics: [
+      { label: "Live Deployment", value: "propdoc-site.vercel.app", url: "https://propdoc-site.vercel.app/" },
       { label: "GitHub Repository", value: "propdoc", url: "https://github.com/krunal-ambaliya/propdoc" },
       { label: "User Roles", value: "3 Portals (Admin/Agent/Trader)" },
       { label: "Database Engine", value: "MySQL Schemas" }
@@ -221,12 +245,11 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "ai-prompt-tools",
+    name: "AI Prompt & Developer Tools",
     title: "AI Prompt & Developer Tools",
     category: "developer-tools",
-    iconType: "code",
-    badgeBg: "bg-emerald-50 dark:bg-emerald-950/70",
-    badgeTextColor: "text-emerald-600 dark:text-emerald-400",
-    badgeBorderColor: "border-emerald-200 dark:border-emerald-800/60",
+    summary: "AI-powered browser and VS Code extensions for prompt generation and code review.",
+    highlights: ["Multi-LLM integration", "Code & security review", "Markdown rendering"],
     image: "https://res.cloudinary.com/dphscxzb4/image/upload/v1790964918/ai_prompt_studio_1790950585780_wqcoht.jpg",
     description:
       "Developed AI-powered developer tools and browser extensions for prompt generation, code review, security analysis, and performance optimization. Integrated multiple LLM APIs, implemented Markdown rendering, improved extension UI, optimized prompt workflows, and enhanced response rendering for accurate, structured AI outputs.",
@@ -258,33 +281,12 @@ export const PROJECTS: ProjectItem[] = [
   }
 ];
 
-// Exact Technical Skills from Resume
-export const SKILLS: SkillItem[] = [
-  // Languages
-  { name: "Python", category: "Languages", proficiency: 90 },
-  { name: "JavaScript", category: "Languages", proficiency: 92 },
-  { name: "HTML5", category: "Languages", proficiency: 98 },
-  { name: "CSS3", category: "Languages", proficiency: 95 },
-  { name: "SQL", category: "Languages", proficiency: 86 },
-
-  // Frameworks & Libraries
-  { name: "React", category: "Frameworks & Libraries", proficiency: 88 },
-  { name: "Tailwind CSS", category: "Frameworks & Libraries", proficiency: 92 },
-  { name: "Bootstrap", category: "Frameworks & Libraries", proficiency: 94 },
-
-  // Web Technologies
-  { name: "Responsive Web Design", category: "Web Technologies", proficiency: 96 },
-  { name: "REST APIs", category: "Web Technologies", proficiency: 90 },
-  { name: "WordPress", category: "Web Technologies", proficiency: 85 },
-
-  // Database
-  { name: "MySQL", category: "Database", proficiency: 88 },
-
-  // Tools
-  { name: "Git", category: "Tools", proficiency: 92 },
-  { name: "GitHub", category: "Tools", proficiency: 94 },
-  { name: "VS Code", category: "Tools", proficiency: 96 },
-  { name: "Linux", category: "Tools", proficiency: 85 }
+// Technical skills from resume, grouped (TypeScript, Next.js, PostgreSQL & Neon come from the projects)
+export const SKILL_GROUPS: SkillGroupItem[] = [
+  { title: "Languages", skills: ["Python", "JavaScript", "TypeScript", "HTML5", "CSS3", "SQL"] },
+  { title: "Frameworks & Web", skills: ["React", "Next.js", "Tailwind CSS", "Bootstrap", "WordPress", "Responsive Web Design"] },
+  { title: "Backend & DB", skills: ["REST APIs", "MySQL", "PostgreSQL", "Neon"] },
+  { title: "Tools", skills: ["Git", "GitHub", "VS Code", "Postman", "Linux"] }
 ];
 
 // Exact Technical Strengths from Resume

@@ -22,14 +22,19 @@ export interface EducationItem {
   coursework?: string[];
 }
 
+export type ProjectCategory = 'web-app' | 'healthcare' | 'developer-tools';
+
 export interface ProjectItem {
   id: string;
+  /** Short display name, e.g. "Timect" */
+  name: string;
+  /** Full descriptive title, shown in the detail view */
   title: string;
-  category: 'web-app' | 'healthcare' | 'developer-tools' | 'all';
-  iconType: 'home' | 'stethoscope' | 'code' | 'shopping-bag';
-  badgeBg: string;
-  badgeTextColor: string;
-  badgeBorderColor: string;
+  category: ProjectCategory;
+  /** One-line description for the card */
+  summary: string;
+  /** 2–3 short feature labels for the card */
+  highlights: string[];
   description: string;
   technologies: string[];
   role?: string;
@@ -41,10 +46,9 @@ export interface ProjectItem {
   image?: string;
 }
 
-export interface SkillItem {
-  name: string;
-  category: 'Languages' | 'Frameworks & Libraries' | 'Web Technologies' | 'Database' | 'Tools';
-  proficiency: number;
+export interface SkillGroupItem {
+  title: string;
+  skills: string[];
 }
 
 export interface TechnicalStrength {
