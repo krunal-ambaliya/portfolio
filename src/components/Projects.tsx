@@ -122,7 +122,7 @@ export const Projects: React.FC = () => {
                 <div
                   className={`absolute -top-24 ${
                     isImageOnLeft ? '-left-24' : '-right-24'
-                  } w-72 h-72 rounded-full bg-blue-500/10 dark:bg-blue-400/10 blur-3xl pointer-events-none`}
+                  } ambient-orb w-72 h-72 [--orb:rgb(59_130_246/0.12)] dark:[--orb:rgb(96_165_250/0.12)]`}
                 />
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">

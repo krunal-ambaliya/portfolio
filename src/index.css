@@ -150,3 +150,33 @@
   box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
 
+
+/* Soft ambient glow drawn with a gradient (no filter: blur — cheap on mobile GPUs) */
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(closest-side, var(--orb), transparent);
+}
+
+/*
+ * Touch devices (iOS Safari especially): dozens of stacked backdrop-filter layers
+ * exceed WebKit's compositing memory and the page renders blank below the fold.
+ * Keep the blur only on the fixed navbar and use more opaque surfaces elsewhere.
+ */
+@media (hover: none) and (pointer: coarse) {
+  .glass-panel,
+  .glass-card,
+  .glass-badge-hero,
+  [class*="backdrop-blur"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .glass-panel { background: rgba(255, 255, 255, 0.92); }
+  .dark .glass-panel { background: rgba(14, 16, 24, 0.92); }
+  .glass-card { background: rgba(255, 255, 255, 0.9); }
+  .dark .glass-card { background: rgba(18, 20, 30, 0.9); }
+  .glass-badge-hero { background: rgba(255, 255, 255, 0.85); }
+  .dark .glass-badge-hero { background: rgba(18, 20, 32, 0.88); }
+}

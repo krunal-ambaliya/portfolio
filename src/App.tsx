@@ -34,16 +34,13 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-[#08090d] text-slate-800 dark:text-slate-100 transition-colors duration-200 overflow-x-hidden">
-      {/* Glassmorphic Ambient Gradient Orbs in Background */}
+      {/* Ambient gradient orbs. Radial gradients instead of filter: blur() — huge blurred
+          layers exhaust iOS Safari's GPU memory and it stops painting the rest of the page. */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden select-none z-0">
-        {/* Top-Right Blue Glow Orb */}
-        <div className="absolute -top-32 -right-32 w-[550px] h-[550px] rounded-full bg-blue-500/12 dark:bg-blue-600/18 blur-[120px]" />
-        {/* Middle-Left Indigo Glow Orb */}
-        <div className="absolute top-[35%] -left-40 w-[600px] h-[600px] rounded-full bg-indigo-500/10 dark:bg-indigo-600/14 blur-[140px]" />
-        {/* Lower-Right Emerald/Teal Glow Orb */}
-        <div className="absolute top-[65%] -right-32 w-[500px] h-[500px] rounded-full bg-teal-500/10 dark:bg-emerald-600/12 blur-[130px]" />
-        {/* Bottom Center Violet Orb */}
-        <div className="absolute -bottom-32 left-1/3 w-[550px] h-[550px] rounded-full bg-purple-500/10 dark:bg-purple-700/12 blur-[130px]" />
+        <div className="ambient-orb -top-32 -right-32 w-[550px] h-[550px] [--orb:rgb(59_130_246/0.14)] dark:[--orb:rgb(37_99_235/0.2)]" />
+        <div className="ambient-orb top-[35%] -left-40 w-[600px] h-[600px] [--orb:rgb(99_102_241/0.12)] dark:[--orb:rgb(79_70_229/0.16)]" />
+        <div className="ambient-orb top-[65%] -right-32 w-[500px] h-[500px] [--orb:rgb(20_184_166/0.12)] dark:[--orb:rgb(5_150_105/0.14)]" />
+        <div className="ambient-orb -bottom-32 left-1/3 w-[550px] h-[550px] [--orb:rgb(168_85_247/0.12)] dark:[--orb:rgb(126_34_206/0.14)]" />
       </div>
 
       <div className="relative z-10">

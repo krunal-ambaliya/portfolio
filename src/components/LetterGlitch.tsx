@@ -25,8 +25,9 @@ export const LetterGlitch: React.FC<LetterGlitchProps> = ({
       return;
     }
 
-    let animationFrameId: number;
+    let animationFrameId = 0;
     let lastTime = 0;
+    let isVisible = true;
     const chars = '0123456789ABCDEF{}[]<>/~*+=_#EFEELE';
     const charArray = chars.split('');
     const fontSize = 16;
@@ -55,9 +56,17 @@ export const LetterGlitch: React.FC<LetterGlitchProps> = ({
     resize();
     window.addEventListener('resize', resize);
 
+    // Slower tick on touch devices to save battery/GPU
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const tickMs = isTouch ? glitchSpeed * 2 : glitchSpeed;
+
     const render = (time: number) => {
+      if (!isVisible || document.hidden) {
+        animationFrameId = 0;
+        return;
+      }
       animationFrameId = requestAnimationFrame(render);
-      if (time - lastTime < glitchSpeed) return;
+      if (time - lastTime < tickMs) return;
       lastTime = time;
 
       // Only randomly update 5% of characters for subtle, zero-lag effect
@@ -84,10 +93,26 @@ export const LetterGlitch: React.FC<LetterGlitchProps> = ({
       }
     };
 
-    animationFrameId = requestAnimationFrame(render);
+    const start = () => {
+      if (!animationFrameId && isVisible && !document.hidden) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    };
+
+    // Only animate while the hero is on screen
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      start();
+    });
+    observer.observe(canvas);
+    document.addEventListener('visibilitychange', start);
+
+    start();
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', start);
       window.removeEventListener('resize', resize);
     };
   }, [glitchSpeed]);
